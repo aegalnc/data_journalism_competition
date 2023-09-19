@@ -25,7 +25,7 @@ function render_message(message_p, message) {
   
     
     return new Promise((resolve) => {
-      function intervalCallback() {
+      function interval_callback() {
         if (i < message.length) {
           message_p.innerHTML += message[i];
           i++;
@@ -38,12 +38,12 @@ function render_message(message_p, message) {
             }
           }
         } else {
-          clearInterval(intervalId);
+          clearInterval(render_message_interval);
           resolve();
         }
       }
     
-      const intervalId = setInterval(intervalCallback, 100); 
+      const render_message_interval = setInterval(interval_callback, 100); 
     });
   }
 
@@ -140,30 +140,26 @@ send_button.addEventListener("animationend", () => {
 map_cover();*/
 
 // 下滑一个窗口
-function scrollViewportDown() {
+function scroll_viewport_down() {
   const buttons = document.querySelectorAll(".scroll");
 
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", () => {
-      console.log("y");
 
-      function intervalCallback() {
+      function interval_callback() {
         if (window.scrollY <= (i + 1) * (window.innerHeight)) {
           window.scrollBy(0, 10);
-          console.log(scrollY);
         } else {
-          clearInterval(scrollViewportDownInterval);
-          console.log("clear");
+          clearInterval(scroll_viewport_downInterval);
         }
       }
       
-      const scrollViewportDownInterval = setInterval(intervalCallback, 1)
-      console.log("1");
+      const scroll_viewport_downInterval = setInterval(interval_callback, 1)
     }) 
   }
 }
 
-scrollViewportDown();
+scroll_viewport_down();
 
 
   
