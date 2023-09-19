@@ -14,12 +14,7 @@ const user_message_1 = "我想问问，我身边的同学都已经手握几段�
 const user_message_2 = "但是我没有实习经历，想进大厂的话不是要实习背景吗？";
 const chatgpt_message_2 = "我这边建议你采取“”。";
 const title = "付费实习";
-const user_messages = {
-    "user_message_1":            "hhhhhhhhhhh\nhhhhhhhhhhhhh\nhhhhhhhhhhhh\nhhhhhhhhhhhhh\nhhhhhhhhhhhhhhhhhhhhhhhh"
-    .split(''),
-    'user_message_1_1': "heiheiheiehie".split('')
-}
-console.log(user_messages.user_message_1 + '_1');
+
 
 
 
