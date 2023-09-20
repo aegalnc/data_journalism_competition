@@ -53,6 +53,7 @@
             window.addEventListener("load", function() {
                 const svgDocument = svgObject.contentDocument;
                 console.log(svgObject);
+                console.log(svgDocument);
                 var svg = svgDocument.getElementsByTagName("path");
                 svg.forEach(element => {
                     element.addEventListener("mouseover", () => {
