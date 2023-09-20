@@ -4,9 +4,6 @@
         <desc>JavaScript chart by amCharts 3.21.15</desc>
         <desc>This map was created using Pixel Map Generator by amCharts and is licensed under the Creative Commons Attribution 4.0 International License. You may use this map the way you see fit as long as proper attribution to the name of amCharts is given in the form of link to http://pixelmap.amcharts.com/ To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ If you would like to use this map without any attribution, you can acquire a commercial license for the JavaScript Maps - a tool that was used to produce this map. To do so, visit amCharts Online Store: http://www.amcharts.com/online-store/</desc>
         <g>
-            <path cs="100,100" d="M0.5,0.5 L1279.5,0.5 L1279.5,650.5 L0.5,650.5 Z" fill="#ffffff" stroke="#000000" fill-opacity="1" stroke-width="1" stroke-opacity="1" class="amcharts-bg" svgUid="48"></path>
-        </g>
-        <g>
             <g transform="translate(197.28099412948356,145.56205421386818) scale(1)">
                 <g transform="translate(0,0) scale(1.1447162401306177)">
                     <path cs="100,100" d="M514.06,513.52l0.32,1.09l-0.54,-0.34l-0.06,0.47l-1.23,-1.1L514.06,513.52zM511.67,512.67l-0.53,1.79l-0.39,-0.35l-1.66,0.44l0.7,-1.14L511.67,512.67zM510.02,511.94l1.6,-1.43l0,0l1.51,-0.77l0.82,0.23l0,0l-0.22,0.28l0.61,-0.33l0.22,0.56l0.78,0.01l-1.99,0.86l1.12,0.34l0.67,-0.83l1.03,0.6l-0.46,1.19l-0.98,-0.62l-0.44,0.54l0.75,0.73l-0.15,0.55l-2.47,-1.51l-2.33,0.03L510.02,511.94z" transform="translate(0,-127)" stroke-width="0.8735789403021793" fill="#818181" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" class="amcharts-map-area amcharts-map-area-CN-91" role="menuitem" aria-label="Hong Kong  " countryId="CN-91" svgUid="48"></path>

@@ -131,7 +131,6 @@ send_button.addEventListener("animationend", () => {
   .then(() => {
     const span = document.getElementsByClassName("title")[0];
     span.classList.add("magnify");
-    console.log("f");
   })
 })
 

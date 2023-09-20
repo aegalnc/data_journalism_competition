@@ -2,31 +2,51 @@ body {
     margin: 0;
 }
 .container {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: #788F8E; 
-    /* background-color: #7182E1; */
+}
+.gradient {
+    position: absolute;
+    bottom: 20%;
+    left: 0%;
+    width: 60%;
+    height: 100%;
+    background: radial-gradient(circle at 40% 50%,rgb(168, 163, 163) 20%,rgb(191, 188, 188) 40%,rgb(231, 222, 222) 60%, rgb(255, 255, 255)70%, transparent );
+
 }
 #hamnav {
-   background-color: rgba(255, 255, 255, 0.4);
-   height: 30px;
-   width: 30px;
-   backdrop-filter: blur(5px);
-   -webkit-backdrop-filter: blur(5px);
+    width: 100%;
+    height: 8%;
+    background-color: #000000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 1fr 12fr 1fr;
 }
 
-#hamnav label {
-    color: #D9CFC3;
-    position: absolute;
-    top: 3%;
-    left: 2%;
-    font-size: large;
+.icons{
+    padding-top: 10px;
+    width: 30px;
+    height: 30px;
     animation: nav-down 1s forwards;
 }
+
+#icon_1 {
+    padding-left: 10%;
+}
+#icon_2 {
+    padding-left: 96%;
+}
+#icon_3 {
+    padding-left: 15%;
+}
+
 
 @keyframes nav-down {
     0% {
@@ -43,10 +63,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 35px;
     overflow: hidden;
-    box-shadow: 3px 3px 3px black;
-    opacity: 0.3;
+    box-shadow: 0px 0px 5px black;
+    opacity: 0.9;
 }
 
 .chat-header {
@@ -135,9 +155,7 @@ body {
 .cursor-container {
     width: 3%;
     height: 5%;
-    
     position: absolute;
-    
 }
 
 .chat-input {
@@ -161,21 +179,64 @@ body {
 }
 .send-button {
     position: absolute; 
-    bottom: 27%; 
+    bottom: 28%; 
     left: 90%;
-    background-image: url("send-button.png");
-    height: 51%;
+    height: 50%;
     width: 7%;
     background-color: #40414F;
     border: none;
-    background-size: cover;
+}
+.send-button img {
+    height: 100%;
+    width: 100%;
 }
 .flash {
     animation: flash 1s forwards;
 }
 
+.scroll {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    position: absolute;
+    bottom: 10%;
+    left: 93%;
+    width: 4%;
+    height: 6%;
+}
+
+.scroll img {
+    width: 100%;
+    height: 100%;
+}
+
+.dots {
+    width: 4%;
+    height: 6%;
+    position: absolute;
+    bottom: 10%;
+    left: 93%;
+    transform: translate(45%, 0);
+}
+.dot_1 {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #D81818;
+    transform: translate(-1%, -10px);
+}
+.dot_2 {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #D81818;
+    transform: translate(-1%, -30px);
+}
+
+
+  
+
 .cursor {
-    width: 7%;
+    width: 5%;
     height: 50%;
     animation: move 1s infinite forwards;
     animation-iteration-count: 1;
