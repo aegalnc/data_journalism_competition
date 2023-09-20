@@ -47,7 +47,21 @@
     
     <div class="passage-container"></div>
     <div class="map" style="top: 300vh;">
-        <img src="Map.svg" alt="" class="map-svg">
+        <object data="Map.svg" id="svg-object"></object>
+        <script>
+            const svgObject = document.getElementById('svg-object');
+            window.addEventListener("load", function() {
+                const svgDocument = svgObject.contentDocument;
+                console.log(svgObject);
+                var svg = svgDocument.getElementsByTagName("path");
+                svg.forEach(element => {
+                    element.addEventListener("mouseover", () => {
+                        element.style.fill = "red";
+                    })
+                });
+            });
+
+        </script>
     </div>
      
     <script src="chatgpt-script.js"></script>

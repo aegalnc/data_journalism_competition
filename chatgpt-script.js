@@ -9,11 +9,15 @@ const cursor = document.getElementsByClassName("cursor")[0];
 const send_button = document.getElementsByClassName("send-button")[0];
 
 // 为message_array赋值
-const chatgpt_message_1 = "你好，实习是提升你就业竞争力的一个很重要的手段，我建议你尽快找一些实习".split('');
-const user_message_1 = "我想问问，我身边的同学都已经手握几段实习经历了，加上现在就业形势如此严峻，我还没有实习过？".split('');
-const user_message_2 = "但是我没有实习经历，想进大厂的话不是要实习背景吗？";
+const chatgpt_message_3 = "你好，实习是提升你就业竞争力的一个很重要的手段，我建议你尽快找一些实习".split('');
+const user_message_3 = "我想问问，我身边的同学都已经手握几段实习经历了，加上现在就业形势如此严峻，我还没有实习过？".split('');
+const user_message_4 = "但是我没有实习经历，想进大厂的话不是要实习背景吗？";
 const chatgpt_message_2 = "我这边建议你采取“”。";
 const title = "付费实习";
+const user_message_1 = "hi";
+const chatgpt_message_1 = "hi";
+const user_message_2 = "hi";
+
 
 
 
@@ -30,12 +34,20 @@ function render_message(message_p, message) {
           message_p.innerHTML += message[i];
           i++;
           if (message === chatgpt_message_2 && (message.length - i) === 2) {
+            const span_wrap = document.createElement("div");
+            message_p.appendChild(span_wrap);
+            span_wrap.classList.add("title_wrap");
+
             const span = document.createElement("span");
-            message_p.appendChild(span);
+            span_wrap.appendChild(span);
             span.classList.add("title");
+
             for (let j = 0; j < title.length; j++) {
               span.innerHTML += title[j];
             }
+
+            const value = window.getComputedStyle(span).getPropertyValue("font-size");
+            span_wrap.setAttribute("style", "width: " + (parseFloat(value.slice(0, -2)) * 4) + "px");
           }
         } else {
           clearInterval(render_message_interval);
@@ -68,12 +80,6 @@ function render_message(message_p, message) {
     chatgpt_message_container.appendChild(chatgpt_avator);
     chatgpt_avator.classList.add('chatgpt-avatar');
     chatgpt_avator.src = "chatgpt.png";
-
-    if (chatgpt_message === chatgpt_message_2) {
-      const span = document.createElement("span");
-      chatgpt_message_p.appendChild(span);
-      span.classList.add('title');
-    }
   
     return render_message(chatgpt_message_p, chatgpt_message);
   }
@@ -125,6 +131,7 @@ send_button.addEventListener("animationend", () => {
   .then(() => {
     const span = document.getElementsByClassName("title")[0];
     span.classList.add("magnify");
+    console.log("f");
   })
 })
 

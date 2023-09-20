@@ -85,7 +85,6 @@ body {
     margin: 0 0 20px 0;
     padding: 24px 0px 0 110px;
     width: 70%;
-    white-space: pre-wrap; 
     font-size: large;
     line-height: 1.5;
     color: #ADABB5;
@@ -106,23 +105,30 @@ body {
     left: 60px;
 }
 .chatgpt-message {
-    white-space: pre-wrap;
     margin: 24px 0 30px 110px;
     color: #CDCCD0;
     font-size: large;
     line-height: 1.5;
+}
+.title_wrap {
+    display: inline-block;
 }
 .title {
     color: #CDCCD0;
     font-size: large;
 }
 .magnify {
-    animation: magnify 3s forwards;
+    animation: magnify 2s forwards;
+    position: absolute;
+    display: inline-block;
+    width: 100%;
 }
 
 @keyframes magnify {
     to {
-        font-size: 1.2em;
+        left: calc((100vh * 98% - 5em * 4) / 2);
+        color: red;
+        font-size: 5em;
     }
 }
 
@@ -171,7 +177,7 @@ body {
 .cursor {
     width: 7%;
     height: 50%;
-    animation: move 5s infinite forwards;
+    animation: move 1s infinite forwards;
     animation-iteration-count: 1;
     position: absolute;  
 }
