@@ -45,7 +45,8 @@
     </div>
 
     
-    <div class="passage-container"></div>
+    <div class="passage-container">
+    </div>
     <div class="map" style="top: 300vh;">
         <object data="Map.svg" id="svg-object"></object>
         <script>
@@ -54,17 +55,22 @@
                 const svgDocument = svgObject.contentDocument;
                 console.log(svgObject);
                 console.log(svgDocument);
-                var svg = svgDocument.getElementsByClassName("amcharts-map-area");
+                var svg = Array.from(svgDocument.getElementsByClassName("amcharts-map-area"));
                 console.log(svg);
                 svg.forEach(element => {
+                    const last_fill = element.style.fill;
                     element.addEventListener("mouseover", () => {
-                        element.style.fill = "red";
+                        element.style.fill = "pink";
+                    })
+                    element.addEventListener("mouseleave", () => {
+                        element.style.fill = last_fill;
                     })
                 });
             });
 
         </script>
     </div>
+    
      
     <script src="chatgpt-script.js"></script>
 </body>
