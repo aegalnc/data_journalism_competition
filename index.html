@@ -54,7 +54,8 @@
                 const svgDocument = svgObject.contentDocument;
                 console.log(svgObject);
                 console.log(svgDocument);
-                var svg = svgDocument.getElementsByTagName("path");
+                var svg = svgDocument.getElementsByClassName("amcharts-map-area");
+                console.log(svg);
                 svg.forEach(element => {
                     element.addEventListener("mouseover", () => {
                         element.style.fill = "red";
