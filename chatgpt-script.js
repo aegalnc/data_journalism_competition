@@ -17,6 +17,8 @@ const title = "付费实习";
 const user_message_1 = "hi";
 const chatgpt_message_1 = "hi";
 const user_message_2 = "hi";
+const user_message_5 = "那我要从哪里得知这些付费信息？"
+const chatgpt_message_5 = "你可以寻找一些求职公众号，例如下面的..."
 
 
 
@@ -146,33 +148,37 @@ function once_listener_scroll(scroll_std, once, callback) {
 }
 
 let second_chatgpt_show = true;
-const second_chatgpt_scroll_std = window.innerHeight;
+const second_chatgpt_scroll_std = window.innerHeight - 150;
 console.log(second_chatgpt_scroll_std)
 function second_chatgpt_callback() {
-  input_message(user_message_1)
-  .then(() => submit_input_message(chat_messages[1], user_message_1))
-  .then(() => chatgpt_reply(chat_messages[1], chatgpt_message_1))
+  input_message(user_message_5)
+  .then(() => submit_input_message(chat_messages[1], user_message_5))
+  .then(() => chatgpt_reply(chat_messages[1], chatgpt_message_5))
 }
 once_listener_scroll(second_chatgpt_scroll_std, second_chatgpt_show, second_chatgpt_callback);
 
 // 新闻页的silde_in
-let news_session_slide_in = true;
-const news_title_wrap = document.getElementsByClassName("news_title_wrap")[0];
-const news_session = document.getElementsByClassName("news_session")[0];
 
-function news_session_slide_in_callback() {
-  news_session.classList.add("slide");
-  console.log("ok");
+const news_title_wrap = document.getElementsByClassName("news_title_wrap")[0];
+const news_sessions = document.getElementsByClassName("news_session");
+
+let news_session_1_slide_in = true;
+let news_session_2_slide_in = true;
+function news_session_1_slide_in_callback() {
+  news_sessions[0].classList.add("slide");
 }
-const news_session_in_std = window.innerHeight + parseFloat(window.getComputedStyle(news_title_wrap).height.slice(0, -2)) + + parseFloat(window.getComputedStyle(news_session).height.slice(0, -2));
-once_listener_scroll(news_session_in_std, news_session_slide_in, news_session_slide_in_callback);
+function news_session_2_slide_in_callback() {
+  news_sessions[1].classList.add("slide");
+}
+const news_session_1_in_std = window.innerHeight + parseFloat(window.getComputedStyle(news_title_wrap).height.slice(0, -2)) + parseFloat(window.getComputedStyle(news_sessions[0]).height.slice(0, -2) / 2);
+const news_session_2_in_std = window.innerHeight + parseFloat(window.getComputedStyle(news_title_wrap).height.slice(0, -2)) + 2 * parseFloat(window.getComputedStyle(news_sessions[0]).height.slice(0, -2) / 2);
+once_listener_scroll(news_session_1_in_std, news_session_1_slide_in, news_session_1_slide_in_callback);
+once_listener_scroll(news_session_2_in_std, news_session_2_slide_in, news_session_2_slide_in_callback);
+
 
 let news_title_slide_in = true;
-
-
 function news_title_slide_in_callback() {
   news_title_wrap.classList.add("slide");
-  console.log("ok");
 }
 const news_title_slide_in_std = window.innerHeight + parseFloat(window.getComputedStyle(news_title_wrap).height.slice(0, -2));
 once_listener_scroll(news_title_slide_in_std, news_title_slide_in, news_title_slide_in_callback);
