@@ -4,7 +4,7 @@ const user_message_1_p = document.getElementById("user-message-1");
 const user_message_container_1 = document.getElementById("user-message-container-1");
 const chatgpt_message_container_1 = document.getElementById("chatgpt-message-container-1");
 const input_message_p = document.getElementsByClassName("input-message")[0];
-const chat_messages = document.getElementsByClassName("chat-messages")[0];
+const chat_messages = document.querySelectorAll(".chat-messages");
 const cursor = document.getElementsByClassName("cursor")[0];
 const send_button = document.getElementsByClassName("send-button")[0];
 
@@ -67,7 +67,7 @@ function render_message(message_p, message) {
   }
   
   // chatgpt回复
-  function chatgpt_reply(chatgpt_message) {
+  function chatgpt_reply(chat_messages, chatgpt_message) {
     const chatgpt_message_container = document.createElement('div');
     chat_messages.appendChild(chatgpt_message_container);
     chatgpt_message_container.classList.add('chatgpt-message-container');
@@ -85,7 +85,7 @@ function render_message(message_p, message) {
   }
   
   // 提交input_message
-  function submit_input_message(user_message) {
+  function submit_input_message(chat_messages, user_message) {
     // 清空input_message
     input_message_p.innerHTML = '';
     // 添加user-message
@@ -123,16 +123,59 @@ cursor.addEventListener("animationend", () => {
 })
 // 
 send_button.addEventListener("animationend", () => {
-  submit_input_message(user_message_1)
-  .then(() => chatgpt_reply(chatgpt_message_1))
+  submit_input_message(chat_messages[0], user_message_1)
+  .then(() => chatgpt_reply(chat_messages[0],chatgpt_message_1))
   .then(() => input_message(user_message_2))
-  .then(() => submit_input_message(user_message_2))
-  .then(() => chatgpt_reply(chatgpt_message_2))
+  .then(() => submit_input_message(chat_messages[0],user_message_2))
+  .then(() => chatgpt_reply(chat_messages[0],chatgpt_message_2))
   .then(() => {
     const span = document.getElementsByClassName("title")[0];
     span.classList.add("magnify");
   })
 })
+
+// scroll监听第二页chatgpt
+function once_listener_scroll(scroll_std, once, callback) {
+  window.addEventListener("scroll", () => {
+    console.log(scrollY);
+    if (scrollY >= scroll_std && once) {
+      callback();
+      once = false;
+    }
+  })
+}
+
+let second_chatgpt_show = true;
+const second_chatgpt_scroll_std = window.innerHeight;
+console.log(second_chatgpt_scroll_std)
+function second_chatgpt_callback() {
+  input_message(user_message_1)
+  .then(() => submit_input_message(chat_messages[1], user_message_1))
+  .then(() => chatgpt_reply(chat_messages[1], chatgpt_message_1))
+}
+once_listener_scroll(second_chatgpt_scroll_std, second_chatgpt_show, second_chatgpt_callback);
+
+// 新闻页的silde_in
+let news_session_slide_in = true;
+const news_title_wrap = document.getElementsByClassName("news_title_wrap")[0];
+const news_session = document.getElementsByClassName("news_session")[0];
+
+function news_session_slide_in_callback() {
+  news_session.classList.add("slide");
+  console.log("ok");
+}
+const news_session_in_std = window.innerHeight + parseFloat(window.getComputedStyle(news_title_wrap).height.slice(0, -2)) + + parseFloat(window.getComputedStyle(news_session).height.slice(0, -2));
+once_listener_scroll(news_session_in_std, news_session_slide_in, news_session_slide_in_callback);
+
+let news_title_slide_in = true;
+
+
+function news_title_slide_in_callback() {
+  news_title_wrap.classList.add("slide");
+  console.log("ok");
+}
+const news_title_slide_in_std = window.innerHeight + parseFloat(window.getComputedStyle(news_title_wrap).height.slice(0, -2));
+once_listener_scroll(news_title_slide_in_std, news_title_slide_in, news_title_slide_in_callback);
 
 // map覆盖
 /*function map_cover() {

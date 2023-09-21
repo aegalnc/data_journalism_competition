@@ -48,7 +48,6 @@
             <div class="chat-input">
                 <p class="input-message">send a message...</p>
                 <button class="send-button"></button>
-                <img src="cursor.png" alt="" class="cursor">
             </div>
         </div>
 
@@ -62,11 +61,30 @@
         </button> 
     </div>
 
-    
     <div class="passage-container">
+        <div class="news_title_wrap">
+            <span class="date"></span>
+            <span class="news_title">新闻</span>
+            <span class="date"></span>
+        </div>
+        <div class="news_session">
+            <span class="small_grid">
+                <span class="img"></span>
+                <span class="link"></span>
+            </span>
+            <span class="big_grid"></span>
+            <span class="small_grid"></span>
+        </div>
+        <div class="news_session">
+            <span class="small_grid"></span>
+            <span class="big_grid"></span>
+            <span class="small_grid"></span>
+        </div>
     </div>
+
     <div class="map" style="top: 300vh;">
-        <object data="Map.svg" id="svg-object"></object>
+        <object data="Map.svg" id="svg-object">
+        </object>
         <script>
             const svgObject = document.getElementById('svg-object');
             window.addEventListener("load", function() {
@@ -86,7 +104,7 @@
                 });
             });
         </script>
-    <div class="card"></div>
+        <div class="card"></div>
     </div>
     
      
