@@ -171,7 +171,7 @@ function news_session_2_slide_in_callback() {
   news_sessions[1].classList.add("slide");
 }
 const news_session_1_in_std = window.innerHeight + parseFloat(window.getComputedStyle(news_title_wrap).height.slice(0, -2)) + parseFloat(window.getComputedStyle(news_sessions[0]).height.slice(0, -2) / 2);
-const news_session_2_in_std = window.innerHeight + parseFloat(window.getComputedStyle(news_title_wrap).height.slice(0, -2)) + 2 * parseFloat(window.getComputedStyle(news_sessions[0]).height.slice(0, -2) / 2);
+const news_session_2_in_std = window.innerHeight + parseFloat(window.getComputedStyle(news_title_wrap).height.slice(0, -2)) +  (parseFloat(window.getComputedStyle(news_sessions[0]).height.slice(0, -2)) + parseFloat(window.getComputedStyle(news_sessions[1]).height.slice(0, -2))) / 2;
 once_listener_scroll(news_session_1_in_std, news_session_1_slide_in, news_session_1_slide_in_callback);
 once_listener_scroll(news_session_2_in_std, news_session_2_slide_in, news_session_2_slide_in_callback);
 
