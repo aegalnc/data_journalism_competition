@@ -127,20 +127,20 @@ body {
 }
 .magnify {
     animation: magnify 2s forwards;
-    
     display: inline-block;
-    
 }
 
+
+
 @keyframes magnify {
+   
     to {
-        position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        color: white;
         font-size: 5em;
     }
+
 }
 
 .cursor-container {

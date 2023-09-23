@@ -7,6 +7,7 @@ const input_message_p = document.getElementsByClassName("input-message")[0];
 const chat_messages = document.querySelectorAll(".chat-messages");
 const cursor = document.getElementsByClassName("cursor")[0];
 const send_button = document.getElementsByClassName("send-button")[0];
+const chat_container = document.getElementsByClassName("chat-container")[0];
 
 // 为message_array赋值
 const chatgpt_message_3 = "你好，实习是提升你就业竞争力的一个很重要的手段，我建议你尽快找一些实习".split('');
@@ -49,7 +50,8 @@ function render_message(message_p, message) {
             }
 
             const value = window.getComputedStyle(span).getPropertyValue("font-size");
-            span_wrap.setAttribute("style", "width: " + (parseFloat(value.slice(0, -2)) * 4) + "px");
+            span_wrap.setAttribute("style", "width: " + (parseFloat(value.slice(0, -2)) * 4) + "px; height: " + parseFloat(value.slice(0, -2)) + "px");
+            span.setAttribute("style", "position: absolute; left: " + (span.getBoundingClientRect().left - chat_container.getBoundingClientRect().left) + "px; top: " + (span.getBoundingClientRect().top - chat_container.getBoundingClientRect().top) + "px")
           }
         } else {
           clearInterval(render_message_interval);
@@ -132,9 +134,10 @@ send_button.addEventListener("animationend", () => {
   .then(() => input_message(user_message_2))
   .then(() => submit_input_message(chat_messages[0],user_message_2))
   .then(() => chatgpt_reply(chat_messages[0],chatgpt_message_2))
-  .then(() => {
+  .then(() => {;
     const span = document.getElementsByClassName("title")[0];
     span.classList.add("magnify");
+    
   })
 })
 
