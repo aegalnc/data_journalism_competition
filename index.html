@@ -6,7 +6,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="gradient"></div>
         <nav id="hamnav">
             <img src="icon_1.png" alt="" class="icons" id="icon_1">
             <img src="icon_2.png" alt="" class="icons" id="icon_2">
@@ -34,6 +33,7 @@
         </div>
         <button class="scroll">
             <img src="scroll.png" alt="">
+            <div id="prompt"></div>
         </button> 
     </div>
 
@@ -60,7 +60,7 @@
             <img src="scroll.png" alt="">
         </button> 
     </div>
-    <div class="passage-container">
+    <!-- <div class="passage-container">
         <div class="news_title_wrap">
             <span class="date_wrap">
                 <span class="date"></span>
@@ -121,9 +121,9 @@
                 </span>
             </span>
         </div>
-    </div>
+    </div> -->
 
-    <div class="map" style="top: 350vh;">
+    <!-- <div class="map" style="top: 350vh;"> 
         <object data="Map.svg" id="svg-object">
         </object>
         <script>
@@ -145,8 +145,37 @@
                 });
             });
         </script>
+        
         <div class="card"></div>
     </div>
+        -->
+    </div>
+
+    <div class="container" >
+        <div class="chat-container">
+            <div class="chat-header">
+                Default(GPT.3.5)
+            </div>
+            <div class="intermediary_message_container pre_slide">
+                <img src="chatgpt.png" alt="" class="intermediary_avatar">
+                <p class="intermediary_message">我说A哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+            </div>
+            <div class="student_message_container  pre_slide">
+                <img src="user-avatar.png" alt="" class="student_avatar">
+                <p class="student_message">我也说A</p>
+            </div>
+            <div class="intermediary_message_container  pre_slide">
+                <img src="chatgpt.png" alt="" class="intermediary_avatar">
+                <p class="intermediary_message">我说B</p>
+            </div>
+            <div class="student_message_container  pre_slide">
+                <img src="user-avatar.png" alt="" class="student_avatar">
+                <p class="student_message">我也说B</p>
+            </div>
+        </div>
+        
+    </div>
+    <div class="container"></div>
     
      
     <script src="chatgpt-script.js"></script>

@@ -11,15 +11,7 @@ body {
     height: 100vh;
     background: radial-gradient(circle at 30% 50%,rgb(168, 163, 163) 20%,rgb(191, 188, 188) 40%,rgb(231, 222, 222) 60%, rgb(255, 255, 255)70%, transparent );
 }
-.gradient {
-    position: absolute;
-    bottom: 20%;
-    left: 0%;
-    width: 60%;
-    height: 100%;
-    
-
-}
+   
 #hamnav {
     width: 100%;
     height: 8%;
@@ -59,8 +51,8 @@ body {
     height: 80vh;
     width: 80vw;
     background-color: #343541;
-    position: relative;
-    top: 2vh;
+    position: absolute;
+    top: 12vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,20 +83,17 @@ body {
 .user-message-container {
     width: 100%;
     border-bottom: solid 1.5px #2E2F37;
-    position: relative;
     display: flex;
 }
 
 .user-avatar {
-    position: absolute;
-    top: 30px;
-    left: 60px;
     width: 30px;
     height: 30px;
+    margin: 24px 0 20px 30px;
 }
 .user-message {
     margin: 0 0 20px 0;
-    padding: 24px 0px 0 110px;
+    padding: 24px 0px 0 20px;
     width: 70%;
     font-size: large;
     line-height: 1.5;
@@ -114,19 +103,16 @@ body {
 .chatgpt-message-container {
     width: 98%;
     background-color: #434654;
-    position: relative;
     display: flex;
 }
 
 .chatgpt-avatar {
-    position: absolute;
     width: 30px;
     height: 30px;
-    top: 30px;
-    left: 60px;
+    margin: 24px 0 20px 30px;
 }
 .chatgpt-message {
-    margin: 24px 0 30px 110px;
+    margin: 24px 0 30px 20px;
     color: #CDCCD0;
     font-size: large;
     line-height: 1.5;
@@ -137,17 +123,21 @@ body {
 .title {
     color: #CDCCD0;
     font-size: large;
+    white-space: nowrap;
 }
 .magnify {
     animation: magnify 2s forwards;
-    position: absolute;
+    
     display: inline-block;
-    width: 100%;
+    
 }
 
 @keyframes magnify {
     to {
-        left: calc((100vh * 98% - 5em * 4) / 2);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         color: white;
         font-size: 5em;
     }
@@ -411,3 +401,39 @@ body {
     width: 100%;
 }
 
+
+.intermediary_message_container {
+    position: relative;
+    width: 100%;
+    background-color: #241078;
+    display: flex;
+}
+
+.intermediary_avatar {
+    width: 30px;
+    height: 30px;
+    margin: 20px 0 20px 5%;
+}
+.intermediary_message {
+    margin: 22px 5% 22px 3%;
+}
+
+.student_message_container {
+    position: relative;
+    width: 100%;
+    background-color: #a00a78;
+    display: flex;
+}
+.student_avatar {
+    width: 30px;
+    height: 30px;
+    margin: 20px 0 20px 5%;
+}
+
+.student_message {
+    margin: 22px 5% 22px 3%;
+}
+
+.pre_slide {
+    transform: translate(0, 300px);
+}
