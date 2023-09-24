@@ -29,8 +29,6 @@ const chatgpt_message_5 = "你可以寻找一些求职公众号，例如下面�
 // 逐字渲染消息
 function render_message(message_p, message) {
     let i = 0;
-  
-    
     return new Promise((resolve) => {
       function interval_callback() {
         if (i < message.length) {
@@ -51,6 +49,7 @@ function render_message(message_p, message) {
 
             const value = window.getComputedStyle(span).getPropertyValue("font-size");
             span_wrap.setAttribute("style", "width: " + (parseFloat(value.slice(0, -2)) * 4) + "px; height: " + parseFloat(value.slice(0, -2)) + "px");
+
             const a_left = span.getBoundingClientRect().left - chat_container.getBoundingClientRect().left;
             const a_top = span.getBoundingClientRect().top - chat_container.getBoundingClientRect().top;
             const left_offset = span.getClientRects()[0].left - chat_container.getClientRects()[0].left;
@@ -70,7 +69,6 @@ function render_message(message_p, message) {
 
   // 用户输入
   function input_message(user_message) {
-    
     input_message_p.innerHTML = '';
     return render_message(input_message_p, user_message);
   }
@@ -91,7 +89,6 @@ function render_message(message_p, message) {
     chatgpt_message_p.classList.add('chatgpt-message');
   
     
-  
     return render_message(chatgpt_message_p, chatgpt_message);
   }
   
@@ -116,7 +113,6 @@ function render_message(message_p, message) {
       user_message_p.innerHTML += user_message[i];
     }
     
-
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve();
@@ -196,31 +192,7 @@ function second_chatgpt_callback() {
 }
 once_listener_scroll(second_chatgpt_scroll_std, second_chatgpt_show, second_chatgpt_callback);
 
-// 新闻页的slide_in
 
-const news_title_wrap = document.getElementsByClassName("news_title_wrap")[0];
-const news_sessions = document.getElementsByClassName("news_session");
-
-let news_session_1_slide_in = true;
-let news_session_2_slide_in = true;
-function news_session_1_slide_in_callback() {
-  news_sessions[0].classList.add("slide");
-}
-function news_session_2_slide_in_callback() {
-  news_sessions[1].classList.add("slide");
-}
-const news_session_1_in_std = window.innerHeight + parseFloat(window.getComputedStyle(news_title_wrap).height.slice(0, -2)) + parseFloat(window.getComputedStyle(news_sessions[0]).height.slice(0, -2) / 2);
-const news_session_2_in_std = window.innerHeight + parseFloat(window.getComputedStyle(news_title_wrap).height.slice(0, -2)) +  (parseFloat(window.getComputedStyle(news_sessions[0]).height.slice(0, -2)) + parseFloat(window.getComputedStyle(news_sessions[1]).height.slice(0, -2))) / 2;
-once_listener_scroll(news_session_1_in_std, news_session_1_slide_in, news_session_1_slide_in_callback);
-once_listener_scroll(news_session_2_in_std, news_session_2_slide_in, news_session_2_slide_in_callback);
-
-
-let news_title_slide_in = true;
-function news_title_slide_in_callback() {
-  news_title_wrap.classList.add("slide");
-}
-const news_title_slide_in_std = window.innerHeight + parseFloat(window.getComputedStyle(news_title_wrap).height.slice(0, -2));
-once_listener_scroll(news_title_slide_in_std, news_title_slide_in, news_title_slide_in_callback);
 
 // map覆盖
 /*function map_cover() {
@@ -236,10 +208,9 @@ map_cover();*/
 // 下滑一个窗口
 function scroll_viewport_down() {
   const buttons = document.querySelectorAll(".scroll");
-
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", () => {
-
+      console.log("click");
       function interval_callback() {
         if (window.scrollY <= (i + 1) * (window.innerHeight)) {
           window.scrollBy(0, 10);
