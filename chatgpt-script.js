@@ -51,7 +51,12 @@ function render_message(message_p, message) {
 
             const value = window.getComputedStyle(span).getPropertyValue("font-size");
             span_wrap.setAttribute("style", "width: " + (parseFloat(value.slice(0, -2)) * 4) + "px; height: " + parseFloat(value.slice(0, -2)) + "px");
-            span.setAttribute("style", "position: absolute; left: " + (span.getBoundingClientRect().left - chat_container.getBoundingClientRect().left) + "px; top: " + (span.getBoundingClientRect().top - chat_container.getBoundingClientRect().top) + "px")
+            const a_left = span.getBoundingClientRect().left - chat_container.getBoundingClientRect().left;
+            const a_top = span.getBoundingClientRect().top - chat_container.getBoundingClientRect().top;
+            const left_offset = span.getClientRects()[0].left - chat_container.getClientRects()[0].left;
+            const top_offset = span.getClientRects()[0].top - chat_container.getClientRects()[0].top;
+            span.setAttribute("style", "position: absolute; left: " + left_offset + "px; top: " + top_offset + "px")
+            console.log(a_left, a_top, left_offset, top_offset);
           }
         } else {
           clearInterval(render_message_interval);
