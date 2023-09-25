@@ -63,26 +63,7 @@
 
     <div class="map"> 
         <object data="3092451869.svg" id="svg-object">
-        </object>
-        <script>
-            const svgObject = document.getElementById('svg-object');
-            window.addEventListener("load", function() {
-                const svgDocument = svgObject.contentDocument;
-                console.log(svgObject);
-                console.log(svgDocument);
-                var svg = Array.from(svgDocument.getElementsByClassName("amcharts-map-area"));
-                console.log(svg);
-                svg.forEach(element => {
-                    const last_fill = element.style.fill;
-                    element.addEventListener("mouseover", () => {
-                        element.style.fill = "pink";
-                    })
-                    element.addEventListener("mouseleave", () => {
-                        element.style.fill = last_fill;
-                    })
-                });
-            });
-        </script>
+        </object>>
         
         <div class="card"></div>
     </div>

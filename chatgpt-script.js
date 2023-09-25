@@ -254,26 +254,25 @@ function control_position() {
   })
 }
 control_position();
-/*function control_position() {
-  console.log("ok");
-  const reature = document.getElementById("reature_background");
-  const reality_charactor = document.getElementById("reality_charactor");
-  const reatureRect = reature.getBoundingClientRect();
-  const start_line = reatureRect.top + window.scrollY;
-  const end_line = start_line + parseFloat(window.getComputedStyle(reature).getPropertyValue("height")) - window.innerHeight;
 
-  window.addEventListener("scroll", () => {
-    if (scrollY >= start_line && scrollY <= end_line) {
-      let new_left = (scrollY - start_line) / 2 * window.innerHeight / 6;
-      let new_top = scrollY - start_line;
-      console.log("pre_top _1: " + window.getComputedStyle(reality_charactor).getPropertyValue("top"));
-      console.log("_2:" + window.innerWidth / 3);
-      reality_charactor.setAttribute("style", "top:" + new_top + "px; left:" + new_left + "px;");
-    }
-  });
-}
-
-control_position();*/
+// 地图覆盖出现卡片
+const svgObject = document.getElementById('svg-object');
+    window.addEventListener("load", function() {
+        const svgDocument = svgObject.contentDocument;
+        console.log(svgObject);
+        console.log(svgDocument);
+        var provinces = Array.from(svgDocument.getElementsByClassName("province"));
+        console.log(provinces);
+        svg.forEach(element => {
+            const last_fill = element.style.fill;
+            element.addEventListener("mouseover", () => {
+                element.style.fill = "pink";
+            })
+            element.addEventListener("mouseleave", () => {
+                element.style.fill = last_fill;
+            })
+        });
+    });
 
 
 
