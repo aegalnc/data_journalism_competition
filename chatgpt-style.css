@@ -13,6 +13,48 @@ body {
     height: 100vh;
     background: radial-gradient(circle at 30% 50%,rgb(168, 163, 163) 20%,rgb(191, 188, 188) 40%,rgb(231, 222, 222) 60%, rgb(255, 255, 255)70%, transparent );
 }
+
+
+#selector {
+    height: 30%;
+    width: 40%;
+    background-color: #CDCCD0;
+    border-radius: 20px;
+    z-index: 1;
+}
+#selector p {
+    margin-left: 10px;
+    color: #4a3945;
+    font-size: larger;
+}
+.button_wrap {
+    height: 20%;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-top: 20%;
+}
+
+#business {
+    height: 100%;
+    width: 40%;
+    background-color: rgb(207, 45, 112);
+    color: #ffffff;
+    font-size: medium;
+    border: none;
+    border-radius: 20px;
+}
+#internet {
+    height: 100%;
+    width: 40%;
+    background-color: rgb(207, 45, 112);
+    color: #ffffff;
+    font-size: medium;
+    border: none;
+    border-radius: 20px;
+}
    
 #hamnav {
     width: 100%;
@@ -228,19 +270,19 @@ body {
     transform: translate(-50%, 0);
 }
 
-.cursor {
+#cursor {
     width: 5%;
     height: 50%;
+    position: absolute; 
+    top: -30%;
+    left: 90%;
+}
+.cursor {
     animation: move 1s infinite forwards;
-    animation-iteration-count: 1;
-    position: absolute;  
+    animation-iteration-count: 1; 
 }
 
 @keyframes move {
-    0% {
-        top: -30%;
-        left: 90%
-    }
     85% {
         top: 45%;
         left: 3%;

@@ -5,7 +5,7 @@ const user_message_container_1 = document.getElementById("user-message-container
 const chatgpt_message_container_1 = document.getElementById("chatgpt-message-container-1");
 const input_message_p = document.getElementsByClassName("input-message")[0];
 const chat_messages = document.querySelectorAll(".chat-messages");
-const cursor = document.getElementsByClassName("cursor")[0];
+const cursor = document.getElementById("cursor");
 const send_button = document.getElementsByClassName("send-button")[0];
 const chat_container = document.getElementsByClassName("chat-container")[0];
 
@@ -23,7 +23,26 @@ const chatgpt_message_5 = "你可以寻找一些求职公众号，例如下面�
 
 
 
+// 选择专业
+const major = {
+  "business": {
+    "user_message_1": "我是商科专业的学生，我还没有找到实习该怎么办啊？"
+  },
+  "internet": {
+    "user_message_1": "我是互联网专业的学生，我还没有找到实习该怎么办啊？"
+  }
+}
+const selector = document.getElementById("selector");
+const selector_buttons = Array.from(document.getElementsByClassName("selector_button"));
 
+let str_major;
+selector_buttons.forEach(ele => {
+  ele.addEventListener("click", () => {
+    selector.style.display = "none";
+    str_major = ele.id;
+    cursor.classList.add("cursor")
+  })
+})
 
 
 // 逐字渲染消息
@@ -123,14 +142,14 @@ function render_message(message_p, message) {
 
 // 鼠标移动的回调函数
 cursor.addEventListener("animationend", () => {
-  input_message(user_message_1)
+  input_message(major[str_major].user_message_1)
   .then(() => 
     send_button.classList.add("flash")
   )
 })
 // 
 send_button.addEventListener("animationend", () => {
-  submit_input_message(chat_messages[0], user_message_1)
+  submit_input_message(chat_messages[0], major[str_major].user_message_1)
   .then(() => chatgpt_reply(chat_messages[0],chatgpt_message_1))
   .then(() => input_message(user_message_2))
   .then(() => submit_input_message(chat_messages[0],user_message_2))
