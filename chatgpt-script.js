@@ -297,6 +297,8 @@ card.addEventListener("click", () => {
             element.addEventListener("mouseleave", () => {
                 element.style.fill = last_fill;
                 card.style.display = "none";
+                area.innerHTML = '';
+                company.innerHTML = '';
             })
         });
     });
