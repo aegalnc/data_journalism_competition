@@ -145,7 +145,7 @@ send_button.addEventListener("animationend", () => {
 // scroll监听第二页chatgpt
 function once_listener_scroll(scroll_std, once, callback) {
   window.addEventListener("scroll", () => {
-    console.log(scrollY);
+    console.log("scrollY:" + scrollY);
     if (scrollY >= scroll_std && once) {
       callback();
       once = false;
@@ -210,10 +210,9 @@ function scroll_viewport_down() {
   const buttons = document.querySelectorAll(".scroll");
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", () => {
-      console.log("click");
       function interval_callback() {
         if (window.scrollY <= (i + 1) * (window.innerHeight)) {
-          window.scrollBy(0, 10);
+          window.scrollBy(0, 15);
         } else {
           clearInterval(scroll_viewport_downInterval);
         }
@@ -232,6 +231,49 @@ setInterval(() => {
   prompt.classList.toggle("prompt");
 }, 100)*/
 
+// 控制小人位置
+function control_position() {
+  console.log("ok");
+  const reature = document.getElementById("reature_background");
+  const reality_charactor = document.getElementById("reality_charactor");
+
+  window.addEventListener("scroll", () => {
+
+    const rect = reature.getBoundingClientRect();
+    const end_line = 2 * window.innerHeight;
+    const rect_top = - rect.top;
+
+    if (rect_top >= 0 && rect_top <= end_line) {
+      const pre_top = window.innerHeight;
+      const pre_right = window.innerWidth / 3;
+      const new_top = pre_top + rect_top;
+      const new_right = pre_right + (window.innerWidth / 6) / (2 * window.innerHeight) * rect_top;
+      console.log("new_top" + new_top)
+      reality_charactor.setAttribute("style", "top: " + new_top + "px; right: " + new_right + "px;")
+    }
+  })
+}
+control_position();
+/*function control_position() {
+  console.log("ok");
+  const reature = document.getElementById("reature_background");
+  const reality_charactor = document.getElementById("reality_charactor");
+  const reatureRect = reature.getBoundingClientRect();
+  const start_line = reatureRect.top + window.scrollY;
+  const end_line = start_line + parseFloat(window.getComputedStyle(reature).getPropertyValue("height")) - window.innerHeight;
+
+  window.addEventListener("scroll", () => {
+    if (scrollY >= start_line && scrollY <= end_line) {
+      let new_left = (scrollY - start_line) / 2 * window.innerHeight / 6;
+      let new_top = scrollY - start_line;
+      console.log("pre_top _1: " + window.getComputedStyle(reality_charactor).getPropertyValue("top"));
+      console.log("_2:" + window.innerWidth / 3);
+      reality_charactor.setAttribute("style", "top:" + new_top + "px; left:" + new_left + "px;");
+    }
+  });
+}
+
+control_position();*/
 
 
 

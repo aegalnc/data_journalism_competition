@@ -326,3 +326,24 @@ body {
 .pre_slide {
     transform: translate(0, 300px);
 }
+
+.reality_virture {
+    width: 100vw;
+    height: 297vh;
+    position: relative;
+}
+
+#reature_background {
+    width: 100%;
+    height: 100%;
+}
+
+#reality_charactor {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: calc(100vw / 3);
+    top: 100vh;
+    transform: translate(50%, -100%);
+    z-index: 20;
+}
