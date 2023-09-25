@@ -3,7 +3,7 @@ const chatgpt_message_1_p = document.getElementById("chatgpt-message-1");
 const user_message_1_p = document.getElementById("user-message-1");
 const user_message_container_1 = document.getElementById("user-message-container-1");
 const chatgpt_message_container_1 = document.getElementById("chatgpt-message-container-1");
-const input_message_p = document.getElementsByClassName("input-message")[0];
+const input_message_p = document.getElementsByClassName("input-message");
 const chat_messages = document.querySelectorAll(".chat-messages");
 const cursor = document.getElementById("cursor");
 const send_button = document.getElementsByClassName("send-button")[0];
@@ -87,7 +87,7 @@ function render_message(message_p, message) {
   }
 
   // 用户输入
-  function input_message(user_message) {
+  function input_message(input_message_p, user_message) {
     input_message_p.innerHTML = '';
     return render_message(input_message_p, user_message);
   }
@@ -112,7 +112,7 @@ function render_message(message_p, message) {
   }
   
   // 提交input_message
-  function submit_input_message(chat_messages, user_message) {
+  function submit_input_message(input_message_p,chat_messages, user_message) {
     // 清空input_message
     input_message_p.innerHTML = '';
     // 添加user-message
@@ -142,17 +142,17 @@ function render_message(message_p, message) {
 
 // 鼠标移动的回调函数
 cursor.addEventListener("animationend", () => {
-  input_message(major[str_major].user_message_1)
+  input_message(input_message_p[0], major[str_major].user_message_1)
   .then(() => 
     send_button.classList.add("flash")
   )
 })
 // 
 send_button.addEventListener("animationend", () => {
-  submit_input_message(chat_messages[0], major[str_major].user_message_1)
+  submit_input_message(input_message_p[0], chat_messages[0], major[str_major].user_message_1)
   .then(() => chatgpt_reply(chat_messages[0],chatgpt_message_1))
-  .then(() => input_message(user_message_2))
-  .then(() => submit_input_message(chat_messages[0],user_message_2))
+  .then(() => input_message(input_message_p[0], user_message_2))
+  .then(() => submit_input_message(input_message_p[0], chat_messages[0], user_message_2))
   .then(() => chatgpt_reply(chat_messages[0],chatgpt_message_2))
   .then(() => {;
     const span = document.getElementsByClassName("title")[0];
@@ -160,17 +160,6 @@ send_button.addEventListener("animationend", () => {
     
   })
 })
-
-// scroll监听第二页chatgpt
-function once_listener_scroll(scroll_std, once, callback) {
-  window.addEventListener("scroll", () => {
-    console.log("scrollY:" + scrollY);
-    if (scrollY >= scroll_std && once) {
-      callback();
-      once = false;
-    }
-  })
-}
 
 
 // 重构元素slide in
@@ -199,14 +188,23 @@ delayed_slide_in();
 
 
 
-
+// scroll监听第二页chatgpt
+function once_listener_scroll(scroll_std, once, callback) {
+  window.addEventListener("scroll", () => {
+    console.log("scrollY:" + scrollY);
+    if (scrollY >= scroll_std && once) {
+      callback();
+      once = false;
+    }
+  })
+}
 
 let second_chatgpt_show = true;
 const second_chatgpt_scroll_std = window.innerHeight - 150;
 console.log(second_chatgpt_scroll_std)
 function second_chatgpt_callback() {
-  input_message(user_message_5)
-  .then(() => submit_input_message(chat_messages[1], user_message_5))
+  input_message(input_message_p[1], user_message_5)
+  .then(() => submit_input_message(input_message_p[1], chat_messages[1], user_message_5))
   .then(() => chatgpt_reply(chat_messages[1], chatgpt_message_5))
 }
 once_listener_scroll(second_chatgpt_scroll_std, second_chatgpt_show, second_chatgpt_callback);
