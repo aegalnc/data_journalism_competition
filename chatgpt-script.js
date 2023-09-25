@@ -257,6 +257,25 @@ control_position();
 
 // 地图覆盖出现卡片
 const svgObject = document.getElementById('svg-object');
+const card = document.getElementsByClassName("card")[0];
+const area = document.getElementById("area");
+const company = document.getElementById("company");
+/*
+const test = document.getElementsByClassName("test")[0];
+test.addEventListener("click", () => {
+  card.style.display = "block";
+  for (var key in map) {
+    if (test.id === key) {
+      area.innerHTML = map[key].title;
+      company.innerHTML = map[key].company;
+    console.log("wo");
+    }
+  }
+})
+card.addEventListener("click", () => {
+  card.style.display = "none";
+})*/
+
     window.addEventListener("load", function() {
         const svgDocument = svgObject.contentDocument;
         console.log(svgObject);
@@ -267,13 +286,26 @@ const svgObject = document.getElementById('svg-object');
             const last_fill = element.style.fill;
             element.addEventListener("mouseover", () => {
                 element.style.fill = "pink";
+                card.style.display = "block";
+                for (var key in map) {
+                  if (element.id === key) {
+                    area.innerHTML = map[key].title;
+                    company.innerHTML = map[key].company;
+                  }
+                }
             })
             element.addEventListener("mouseleave", () => {
                 element.style.fill = last_fill;
+                card.style.display = "none";
             })
         });
     });
-
+const map = {
+  "Shanxi": {
+    "title": "Shanxi",
+    "company": "企业a\n企业b"
+  }
+}
 
 
   

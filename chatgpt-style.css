@@ -287,6 +287,15 @@ body {
     height: 100vh;
     position: relative;
 }
+#area {
+    width: 100%;
+    text-align: center;
+}
+#company {
+    width: 100%;
+    text-align: center;
+    white-space: pre-line;
+}
 
 #svg-object {
     width: 100%;
@@ -303,6 +312,20 @@ body {
     border-radius: 30px;
     border: none;
     box-shadow: 0 0 8px rgb(28, 28, 28);
+    transform: translate(0, 50px);
+    animation: showup 0.3s forwards;
+}
+.test {
+    height: 50px;
+    width: 100px;
+    background-color: #a00a78;
+    position: absolute;
+    top: 0;
+}
+@keyframes showup {
+    to {
+        transform: translate(0, 0);
+    }
 }
 
 .intermediary_message_container {
