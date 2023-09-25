@@ -263,7 +263,7 @@ const svgObject = document.getElementById('svg-object');
         console.log(svgDocument);
         var provinces = Array.from(svgDocument.getElementsByClassName("province"));
         console.log(provinces);
-        svg.forEach(element => {
+        provinces.forEach(element => {
             const last_fill = element.style.fill;
             element.addEventListener("mouseover", () => {
                 element.style.fill = "pink";
