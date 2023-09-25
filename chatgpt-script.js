@@ -223,7 +223,7 @@ once_listener_scroll(second_chatgpt_scroll_std, second_chatgpt_show, second_chat
 map_cover();*/
 
 // 下滑一个窗口
-function scroll_viewport_down() {
+/*function scroll_viewport_down() {
   const buttons = document.querySelectorAll(".scroll");
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", () => {
@@ -240,8 +240,30 @@ function scroll_viewport_down() {
   }
 }
 
-scroll_viewport_down();
+scroll_viewport_down();*/
 
+$(document).ready(function() {
+    $(".scroll").eq(0).click(function() {
+      var scrolling = false;
+      if (!scrolling) {
+        scrolling = true;
+        $('html, body').animate({
+          scrollTop: $(".container").eq(1).offset().top,
+        }, 'slow')
+        scrolling = false;
+      } 
+    })
+    $(".scroll").eq(1).click(function() {
+      var scrolling = false;
+      if (!scrolling) {
+      scrolling = true;
+        $('html, body').animate({
+          scrollTop: $(".map").eq(0).offset().top,
+        }, 'slow')
+        scrolling = false;
+      }
+    })
+  })
 // 实现提示词闪烁
 /*const prompt = document.getElementById("prompt");
 setInterval(() => {

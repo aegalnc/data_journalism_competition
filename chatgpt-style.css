@@ -2,7 +2,13 @@ body {
     margin: 0;
 }
 
-
+.back {
+    width: 100vw;
+    height: 100vh;
+    background-color: #241078;
+    z-index: -1;
+    position: fixed;
+}
 .container {
     position: relative;
     display: flex;
