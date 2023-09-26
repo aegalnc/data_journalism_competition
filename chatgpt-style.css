@@ -1,11 +1,9 @@
-body {
-    margin: 0;
-}
+
 
 .back {
     width: 100vw;
     height: 100vh;
-    background-color: #241078;
+    background-color: #1b2321;
     z-index: -1;
     position: fixed;
 }
@@ -17,37 +15,46 @@ body {
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(circle at 30% 50%,rgb(168, 163, 163) 20%,rgb(191, 188, 188) 40%,rgb(231, 222, 222) 60%, rgb(255, 255, 255)70%, transparent );
+    background-color: #353741;
+    /* filter: blur(10px); */
+    /* background: linear-gradient(to right, #353741 , #b4b4ba) */
+    /*  radial-gradient(circle at 30% 50%,rgb(168, 163, 163) 20%,rgb(191, 188, 188) 40%,rgb(231, 222, 222) 60%, rgb(255, 255, 255)70%, transparent ); */
 }
 
 
 #selector {
-    height: 30%;
+    position: absolute;
+    top: 0;
+    height: 50%;
     width: 40%;
-    background-color: #CDCCD0;
-    border-radius: 20px;
+    background-color: rgba(30, 31, 36, 0.6);
+    /* background: radial-gradient(circle, rgba(245, 108, 126, 0.2) 30%, rgba(202, 90, 105, 0.3) 60%, rgba(103, 42, 50, 0.4) 80%, rgba(107, 67, 74, 0.6) 90%); */
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 0 5px #939497;
     z-index: 1;
 }
 #selector p {
     margin-left: 10px;
-    color: #4a3945;
+    margin-top: 0;
+    padding-top: 10%;
+    color: #bbbdc5;
     font-size: larger;
 }
 .button_wrap {
-    height: 20%;
-    width: 60%;
+    height: 15%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
-    padding-left: 20%;
-    padding-right: 20%;
-    margin-top: 20%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 15%;
 }
 
 #business {
     height: 100%;
     width: 40%;
-    background-color: rgb(207, 45, 112);
-    color: #ffffff;
+    background-color: #a1aaa9;
+    color: #d3d4d8;
     font-size: medium;
     border: none;
     border-radius: 20px;
@@ -55,8 +62,8 @@ body {
 #internet {
     height: 100%;
     width: 40%;
-    background-color: rgb(207, 45, 112);
-    color: #ffffff;
+    background-color: #a1aaa9;
+    color: #d3d4d8;
     font-size: medium;
     border: none;
     border-radius: 20px;
@@ -65,12 +72,15 @@ body {
 #hamnav {
     width: 100%;
     height: 8%;
-    background-color: #000000;
     position: absolute;
     top: 0;
     left: 0;
     display: grid;
     grid-template-columns: 1fr 12fr 1fr;
+    /* border: solid 1px; */
+    /* border-image: linear-gradient(to left, #2d2a2a, #898b89); */
+    border-image-slice: 0 0 100 0;
+
 }
 
 .icons{
@@ -100,7 +110,10 @@ body {
 .chat-container {
     height: 80vh;
     width: 80vw;
-    background-color: #343541;
+    /*background: linear-gradient(rgba(255, 255, 255, 0.133), transparent);*/
+    background-color: #6F7279;
+    background: linear-gradient(to right,#6F7279, #c4c0c1 );
+    border: solid 1px #8a8a8d;
     position: absolute;
     top: 12vh;
     display: flex;
@@ -108,19 +121,20 @@ body {
     align-items: center;
     border-radius: 35px;
     overflow: hidden;
-    box-shadow: 0px 0px 5px black;
+    box-shadow: 0px 0px 5px rgb(151, 149, 149);
     opacity: 0.9;
 }
 
 .chat-header {
-    background-color: #343541;
+    background-color: #6F7279;
+    background: linear-gradient(to right,#6F7279, #c4c0c1 );
     height: 10%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #D4D1D3;
-    border-bottom: #2E2F37 solid 1.5px;
+    border-bottom: #545458 solid 1.5px;
 }
 
 
@@ -132,7 +146,7 @@ body {
 
 .user-message-container {
     width: 100%;
-    border-bottom: solid 1.5px #2E2F37;
+    border-bottom: solid 1.5px #a5a6ac;
     display: flex;
 }
 
@@ -151,8 +165,8 @@ body {
 }
 
 .chatgpt-message-container {
-    width: 98%;
-    background-color: #434654;
+    width: 100%;
+    background-color: #6F7279;
     display: flex;
 }
 
@@ -204,9 +218,9 @@ body {
     width: 80%;
     display: flex;
     justify-content: center;
-    background-color: #40414F;
+    background-color: #6F7279;
     border-radius: 20px;
-    border: 1.5px solid #2E2F37;
+    border: 1.5px solid #8a8a8d;
 }
 .input-message {
     width: 70%;
@@ -259,7 +273,7 @@ body {
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background-color: #D81818;
+    background-color: #6f7279;
     position: absolute;
     top: 20%;
     left: 50%;
@@ -269,7 +283,7 @@ body {
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background-color: #D81818;
+    background-color: #6f7279;
     position: absolute;
     top: 60%;
     left: 50%;
@@ -376,36 +390,75 @@ body {
     }
 }
 
-.intermediary_message_container {
-    position: relative;
-    width: 100%;
-    background-color: #241078;
-    display: flex;
+.intermediary_chat_container {
+    width: 60%;
+    height: 80%;
+    background-color: #dfe2e7;
+    border: solid 1px #9c9a9a;
+    box-shadow: 0 0 5px #cdcbcb ;
 }
 
-.intermediary_avatar {
-    width: 30px;
-    height: 30px;
-    margin: 20px 0 20px 5%;
+.intermediary_header {
+    height: 10%;
+    margin: 0;
+    padding: 10px 0 0 20px;
+    font-size: large;
+    border-bottom: solid 2px #cdced0;
+    box-shadow: 0 10 4px #838597;
 }
+
+.intermediary_chat_messages {
+    width: 100%;
+    height: 90%;
+    background-color: #d7dde7;
+}
+
+.intermediary_name {
+    color:rgb(126, 125, 125);
+    width: 100%;
+    padding-left: 25px;
+    padding-top: 3%;
+    font-size: small;
+    margin: 0;
+}
+
+.intermediary_message_container {
+    width: 100%;
+}
+
 .intermediary_message {
-    margin: 22px 5% 22px 3%;
+    white-space: pre-line;
+    color: #181919;
+    padding: 10px 3% 12px 3%;
+    background-color: #dfe2e7;
+    box-shadow: 0 0 3px #d4d3d3;
+    border-radius: 10px;
+    max-width: 70%;
+    margin: 3% 0 0 25px;
 }
 
 .student_message_container {
-    position: relative;
-    width: 100%;
-    background-color: #a00a78;
     display: flex;
-}
-.student_avatar {
-    width: 30px;
-    height: 30px;
-    margin: 20px 0 20px 5%;
+    flex-direction: column;
+    align-items: end;
 }
 
+.student_name {
+    color:rgb(126, 125, 125);
+    padding-right: 25px;
+    padding-top: 3%;
+    font-size: small;
+    margin: 0;
+}
 .student_message {
-    margin: 22px 5% 22px 3%;
+    white-space: pre-line;
+    color: #dce7e7;
+    padding: 10px 3% 12px 3%;
+    background-color: #336fd7;
+    box-shadow: 0 0 3px #d4d3d3;
+    border-radius: 10px;
+    max-width: 70%;
+    margin: 3% 25px 0 0;
 }
 
 .pre_slide {
