@@ -40,6 +40,7 @@ selector_buttons.forEach(ele => {
   ele.addEventListener("click", () => {
     selector.style.display = "none";
     $(".blur").toggleClass("blur");
+    $(".icons").addClass("down");
     str_major = ele.id;
     cursor.classList.add("cursor")
   })
