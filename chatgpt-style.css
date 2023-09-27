@@ -22,7 +22,6 @@ body {
 .blur_wrap {
     width: 100%;
     height: 100%;
-    align-items: center;
 }
 .blur {
     filter: blur(20px);
@@ -121,7 +120,7 @@ body {
     opacity: 0.9;
     margin: 120px 10vw 0 10vw;
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 400px) {
     .chat-container {
         margin: 70px 10vw 0 10vw;
     }
@@ -134,7 +133,7 @@ body {
     align-items: center;
     justify-content: center;
     background: linear-gradient(to right,#6F7279, #c4c0c1 );
-    font-size: 2em;
+    font-size: 4em;
     color: #D4D1D3;
     border-bottom: #545458 solid 1.5px;
 }
@@ -205,7 +204,18 @@ body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 2em;
+        font-size: 7em;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    @keyframes magnify {
+        to {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5em;
+        }
     }
 }
 
@@ -218,7 +228,7 @@ body {
 .chat-input {
     position: absolute;
     bottom: 3%;
-    height: 10%;
+    height: 70px;
     width: 80%;
     display: flex;
     justify-content: center;
@@ -251,21 +261,20 @@ body {
     animation: flash 1s forwards;
 }
 
+/* 下滑按钮 */
 .scroll {
-    background-color: rgba(0,0,0,0);
-    border: none;
+    width: 4%;
+    height: 6%;
     position: absolute;
     bottom: 10%;
     left: 93%;
-    width: 4%;
-    height: 6%;
+    background-color: rgba(0,0,0,0);
+    border: none;    
 }
-
 .scroll img {
     width: 100%;
     height: 100%;
 }
-
 .dots {
     width: 4%;
     height: 6%;
@@ -276,12 +285,12 @@ body {
 .dot_1 {
     width: 4px;
     height: 4px;
-    border-radius: 50%;
-    background-color: #6f7279;
     position: absolute;
     top: 20%;
     left: 50%;
     transform: translate(-50%, 0);
+    border-radius: 50%;
+    background-color: #6f7279;
 }
 .dot_2 {
     width: 4px;
