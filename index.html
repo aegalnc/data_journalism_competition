@@ -8,42 +8,56 @@
 <body>
     
     <div class="container">
+
+        <!-- 专业选择 -->
         <div id="selector">
             <p>浏览新闻之前，请先选择专业类型：</p>
-            <div class="button_wrap"> 
+            <div id="button_wrap"> 
                 <button id="business" class="selector_button">商科</button>
                 <button id="internet" class="selector_button">互联网</button>
             </div>
         </div>
-        <nav id="hamnav">
-            <img src="icon_1.png" alt="" class="icons" id="icon_1">
-            <img src="icon_2.png" alt="" class="icons" id="icon_2">
-            <img src="icon_3.png" alt="" class="icons" id="icon_3">
-        </nav>
 
-        <div class="chat-container">
-            <div class="chat-header">
-                Default(GPT.3.5)
+        <div class="blur_wrap blur">
+
+            <nav id="hamnav">
+                <img src="icon_1.png" alt="" class="icons" id="icon_1">
+                <img src="icon_2.png" alt="" class="icons" id="icon_2">
+                <img src="icon_3.png" alt="" class="icons" id="icon_3">
+            </nav>
+
+
+            <div class="chat-container">
+
+                <div class="chat-header">
+                    Default(GPT.3.5)
+                </div>
+
+                <div class="chat-messages">
+                </div>
+
+                <div class="chat-input">
+                    <p class="input-message">send a message...</p>
+                    <button class="send-button">
+                        <img src="send-button.png" alt="">
+                    </button>
+                    <img src="cursor.png" alt="" id="cursor">
+                </div>
+
             </div>
-            <div class="chat-messages">
+
+            <!-- 下滑按钮 -->
+            <div class="dots">
+                <div class="dot_1"></div>
+                <div class="dot_2"></div>
             </div>
-            <div class="chat-input">
-                <p class="input-message">send a message...</p>
-                <button class="send-button">
-                    <img src="send-button.png" alt="">
-                </button>
-                <img src="cursor.png" alt="" id="cursor">
-            </div>
+            <button class="scroll">
+                <img src="scroll.png" alt="">
+                <div id="prompt"></div>
+            </button> 
+
         </div>
 
-        <div class="dots">
-            <div class="dot_1"></div>
-            <div class="dot_2"></div>
-        </div>
-        <button class="scroll">
-            <img src="scroll.png" alt="">
-            <div id="prompt"></div>
-        </button> 
     </div>
 
 

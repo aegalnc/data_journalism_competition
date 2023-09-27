@@ -39,6 +39,7 @@ let str_major;
 selector_buttons.forEach(ele => {
   ele.addEventListener("click", () => {
     selector.style.display = "none";
+    $(".blur").toggleClass("blur");
     str_major = ele.id;
     cursor.classList.add("cursor")
   })
