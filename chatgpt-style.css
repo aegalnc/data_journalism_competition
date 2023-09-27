@@ -217,7 +217,6 @@ body {
         font-size: 7em;
     }
 }
-
 @media screen and (min-width: 500px) {
     @keyframes magnify {
         to {
@@ -260,7 +259,7 @@ body {
     left: 90%;
     height: 50%;
     width: 7%;
-    background-color: #40414F;
+    background-color: #6F7279;
     border: none;
 }
 .send-button img {
@@ -270,16 +269,29 @@ body {
 .flash {
     animation: flash 1s forwards;
 }
+@keyframes flash {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
 
 /* 下滑按钮 */
 .scroll {
     width: 4%;
     height: 6%;
     position: absolute;
-    bottom: 10%;
+    bottom: 20%;
     left: 93%;
     background-color: rgba(0,0,0,0);
     border: none;    
+}
+@media screen and (min-width: 500px) {
+    .scroll {
+        bottom: 10%;  
+    } 
 }
 .scroll img {
     width: 100%;
@@ -289,8 +301,13 @@ body {
     width: 4%;
     height: 6%;
     position: absolute;
-    bottom: 16%;
+    bottom: 23%;
     left: 93%;
+}
+@media screen and (min-width: 500px) {
+    .dots {
+        bottom: 16%;
+    }
 }
 .dot_1 {
     width: 4px;
@@ -346,15 +363,6 @@ body {
         left: 3%;
         fliter: brightness(1);
     } 
-}
-
-@keyframes flash {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
 }
 
 .slide {
