@@ -22,11 +22,7 @@ body {
 .blur_wrap {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-
 }
 .blur {
     filter: blur(20px);
@@ -111,6 +107,7 @@ body {
 .chat-container {
     height: 80vh;
     width: 80vw;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -122,17 +119,22 @@ body {
     overflow: hidden;
     box-shadow: 0px 0px 5px rgb(151, 149, 149);
     opacity: 0.9;
+    margin: 120px 10vw 0 10vw;
+}
+@media screen and (min-width: 600px) {
+    .chat-container {
+        margin: 70px 10vw 0 10vw;
+    }
 }
 
 .chat-header {
     height: 10%;
     width: 100%;
-    background-color: #6F7279;
-    background: linear-gradient(to right,#6F7279, #c4c0c1 );
-    font-size: 2em;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(to right,#6F7279, #c4c0c1 );
+    font-size: 2em;
     color: #D4D1D3;
     border-bottom: #545458 solid 1.5px;
 }
@@ -141,13 +143,13 @@ body {
     .chat-header {
         font-size: 1em;
     }
-  }
+}
 
 
 /* 渲染对话框 */
 .chat-messages {
     width: 100%;
-    height: 80%;
+    height: 70%;
 }
 
 .user-message-container {
@@ -155,16 +157,15 @@ body {
     border-bottom: solid 1.5px #a5a6ac;
     display: flex;
 }
-
 .user-avatar {
     width: 30px;
     height: 30px;
     margin: 24px 0 20px 30px;
 }
 .user-message {
+    width: 70%;
     margin: 0 0 20px 0;
     padding: 24px 0px 0 20px;
-    width: 70%;
     font-size: large;
     line-height: 1.5;
     color: #ADABB5;
@@ -175,7 +176,6 @@ body {
     background-color: #6F7279;
     display: flex;
 }
-
 .chatgpt-avatar {
     width: 30px;
     height: 30px;
@@ -187,6 +187,7 @@ body {
     font-size: large;
     line-height: 1.5;
 }
+
 .title_wrap {
     display: inline-block;
 }
@@ -199,9 +200,6 @@ body {
     animation: magnify 2s forwards;
     display: inline-block;
 }
-
-
-
 @keyframes magnify {
     to {
         top: 50%;
@@ -220,7 +218,7 @@ body {
 .chat-input {
     position: absolute;
     bottom: 3%;
-    height: 13%;
+    height: 10%;
     width: 80%;
     display: flex;
     justify-content: center;
