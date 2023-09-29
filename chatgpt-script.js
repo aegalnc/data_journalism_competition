@@ -26,10 +26,64 @@ const chatgpt_message_5 = "你可以寻找一些求职公众号，例如下面�
 // 选择专业
 const major = {
   "business": {
-    "user_message_1": "我是商科专业的学生，我还没有找到实习该怎么办啊？"
+    "user_message_1": "我是商科专业的学生，我还没有找到实习该怎么办啊？",
+    "passage_array": [
+      {
+        "img": "",
+        "title": "",
+        "herf": ""
+      },
+      {
+        "img": "",
+        "title": "",
+        "herf": ""
+      },
+      {
+        "img": "",
+        "title": "",
+        "herf": ""
+      },
+      {
+        "img": "",
+        "title": "",
+        "herf": ""
+      },
+      {
+        "img": "",
+        "title": "",
+        "herf": ""
+      },
+    ]
   },
   "internet": {
-    "user_message_1": "我是互联网专业的学生，我还没有找到实习该怎么办啊？"
+    "user_message_1": "我是互联网专业的学生，我还没有找到实习该怎么办啊？",
+    "passage_array": [
+      {
+        "img": "",
+        "title": "",
+        "herf": ""
+      },
+      {
+        "img": "",
+        "title": "",
+        "herf": ""
+      },
+      {
+        "img": "",
+        "title": "",
+        "herf": ""
+      },
+      {
+        "img": "",
+        "title": "",
+        "herf": ""
+      },
+      {
+        "img": "",
+        "title": "",
+        "herf": ""
+      },
+    ]
   }
 }
 const selector = document.getElementById("selector");
@@ -109,10 +163,10 @@ function render_message(message_p, message) {
     chatgpt_message_container.appendChild(chatgpt_message_p);
     chatgpt_message_p.classList.add('chatgpt-message');
   
-    
     return render_message(chatgpt_message_p, chatgpt_message);
+    
   }
-  
+
   // 提交input_message
   function submit_input_message(user_message) {
     // 清空input_message
@@ -174,7 +228,40 @@ $(".prompt").eq(0).click(() => {
   input_message(user_message_5)
   .then(() => submit_input_message(user_message_5))
   .then(() => chatgpt_reply(chatgpt_message_5))
+  .then(() => {
+      const passages_wrap = document.createElement('div');
+      passages_wrap.classList.add("passages_wrap");
+      const chatgpt_message_container = document.getElementsByClassName("chatgpt-message-container")[0];
+      chatgpt_message_container.appendChild(passages_wrap);
+      const passages = document.createElement('div');
+      passages.classList.add("passages");
+      passages_wrap.appendChild(passages)
+      for (let i = 0; i < 5; i++) {
+        const passage = document.createElement('div');
+        passage.classList.add("passage");
+        passages.appendChild(passage);
+        const passage_image = document.createElement('img');
+        passage_image.classList.add("passage_image");
+        passage.appendChild(passage_image);
+        passage_image.src = major[str_major].passage_array[i].img;
+        const passage_title = document.createElement('p');
+        passage_title.classList.add("passage_title");
+        passage.appendChild(passage_title);
+        passage_title.innerHTML = major[str_major].passage_array[i].title;
+      }
+  })
 })
+
+// hover弹出推文卡片
+/*$(".passage").each(function() {
+  $(this).mouseover(function() {
+    $(this).addClass("focus");
+})})
+$(".passage").each(function() {
+  $(this).mouseleave(function() {
+    $(this).addClass("restore");
+    $(this).removeClass("focus");
+})})*/
 
 
 // 重构元素slide in
