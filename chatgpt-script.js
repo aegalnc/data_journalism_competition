@@ -3,8 +3,8 @@ const chatgpt_message_1_p = document.getElementById("chatgpt-message-1");
 const user_message_1_p = document.getElementById("user-message-1");
 const user_message_container_1 = document.getElementById("user-message-container-1");
 const chatgpt_message_container_1 = document.getElementById("chatgpt-message-container-1");
-const input_message_p = document.getElementsByClassName("input-message");
-const chat_messages = document.querySelectorAll(".chat-messages");
+const input_message_p = document.getElementsByClassName("input-message")[0];
+const chat_messages = document.getElementsByClassName("chat-messages")[0];
 const cursor = document.getElementById("cursor");
 const send_button = document.getElementsByClassName("send-button")[0];
 const chat_container = document.getElementsByClassName("chat-container")[0];
@@ -89,13 +89,13 @@ function render_message(message_p, message) {
   }
 
   // 用户输入
-  function input_message(input_message_p, user_message) {
-    input_message_p.innerHTML = '';
+  function input_message(user_message) {
+    $(".input-message").html('');
     return render_message(input_message_p, user_message);
   }
   
   // chatgpt回复
-  function chatgpt_reply(chat_messages, chatgpt_message) {
+  function chatgpt_reply(chatgpt_message) {
     const chatgpt_message_container = document.createElement('div');
     chat_messages.appendChild(chatgpt_message_container);
     chatgpt_message_container.classList.add('chatgpt-message-container');
@@ -114,9 +114,9 @@ function render_message(message_p, message) {
   }
   
   // 提交input_message
-  function submit_input_message(input_message_p,chat_messages, user_message) {
+  function submit_input_message(user_message) {
     // 清空input_message
-    input_message_p.innerHTML = '';
+    $(".input-message").html('');
     // 添加user-message
     const user_message_container = document.createElement('div');
     chat_messages.appendChild(user_message_container);
@@ -137,30 +137,43 @@ function render_message(message_p, message) {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve();
-      }, 100)
+      }, 300)
     })
   }
 
 
 // 鼠标移动的回调函数
 cursor.addEventListener("animationend", () => {
-  input_message(input_message_p[0], major[str_major].user_message_1)
+  input_message(major[str_major].user_message_1)
   .then(() => 
     send_button.classList.add("flash")
   )
 })
-// 
+// submit第一条信息
 send_button.addEventListener("animationend", () => {
-  submit_input_message(input_message_p[0], chat_messages[0], major[str_major].user_message_1)
-  .then(() => chatgpt_reply(chat_messages[0],chatgpt_message_1))
-  .then(() => input_message(input_message_p[0], user_message_2))
-  .then(() => submit_input_message(input_message_p[0], chat_messages[0], user_message_2))
-  .then(() => chatgpt_reply(chat_messages[0],chatgpt_message_2))
-  .then(() => {;
-    const span = document.getElementsByClassName("title")[0];
-    span.classList.add("magnify");
-    
+  submit_input_message(major[str_major].user_message_1)
+  .then(() => chatgpt_reply(chatgpt_message_1))
+  .then(() => input_message(user_message_2))
+  .then(() => submit_input_message(user_message_2))
+  .then(() => chatgpt_reply(chatgpt_message_2))
+  .then(() => {
+    setTimeout(() => {
+      const span = document.getElementsByClassName("title")[0];
+      span.classList.add("magnify");
+      span.addEventListener("animationend", () => {
+        $(".prompt").eq(0).css("display", "block");
+      })
+    }, 1000)
   })
+})
+
+$(".prompt").eq(0).click(() => {
+  $(".user-message-container").remove();
+  $(".chatgpt-message-container").remove();
+  $(".prompt").eq(0).css("display", "none");
+  input_message(user_message_5)
+  .then(() => submit_input_message(user_message_5))
+  .then(() => chatgpt_reply(chatgpt_message_5))
 })
 
 
@@ -267,10 +280,10 @@ $(document).ready(function() {
     })
   })
 // 实现提示词闪烁
-/*const prompt = document.getElementById("prompt");
+/* const prompt = document.getElementsByClassName("prompt")[0];
 setInterval(() => {
   prompt.classList.toggle("prompt");
-}, 100)*/
+}, 500) */
 
 // 控制小人位置
 function control_position() {

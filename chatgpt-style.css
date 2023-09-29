@@ -159,7 +159,7 @@ body {
 
 .user-message-container {
     width: 100%;
-    border-bottom: solid 1.5px #a5a6ac;
+    border-bottom: solid 1.5px #9e9ea0;
     display: flex;
 }
 .user-avatar {
@@ -173,7 +173,7 @@ body {
     padding: 24px 0px 0 20px;
     font-size: 4em;
     line-height: 1.5;
-    color: #ADABB5;
+    color: #e1e0e4;
 }
 @media screen and (min-width: 500px) {
     .user-message {
@@ -257,7 +257,7 @@ body {
     position: absolute;
     bottom: 35%; 
     left: 5%;
-    color: #838597;
+    color: #e3e3e7;
 }
 .send-button {
     position: absolute; 
@@ -367,6 +367,25 @@ body {
         left: 3%;
         fliter: brightness(1);
     } 
+}
+
+/* 继续提示词 */
+.prompt {
+    white-space: nowrap;
+    background-color: rgba(66, 66, 69, 0.2);
+    position: absolute;
+    right: 50%;
+    bottom: 20%;
+    transform: translate(50%, 0);
+    padding: 6px 20px 6px 20px;
+    color: #a6a7a9;
+    animation: blink infinite 2s;
+    cursor: pointer;
+}
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
 }
 
 /* 元素滑入 */
