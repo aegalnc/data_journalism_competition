@@ -291,7 +291,7 @@ delayed_slide_in();
 
 
 // scroll监听第二页chatgpt
-function once_listener_scroll(scroll_std, once, callback) {
+/*function once_listener_scroll(scroll_std, once, callback) {
   window.addEventListener("scroll", () => {
     console.log("scrollY:" + scrollY);
     if (scrollY >= scroll_std && once) {
@@ -309,7 +309,7 @@ function second_chatgpt_callback() {
   .then(() => submit_input_message(input_message_p[1], chat_messages[1], user_message_5))
   .then(() => chatgpt_reply(chat_messages[1], chatgpt_message_5))
 }
-once_listener_scroll(second_chatgpt_scroll_std, second_chatgpt_show, second_chatgpt_callback);
+once_listener_scroll(second_chatgpt_scroll_std, second_chatgpt_show, second_chatgpt_callback);*/
 
 
 
@@ -449,6 +449,21 @@ const map = {
     "company": "企业a\n企业b"
   }
 }
+
+// 检查二维码出现
+function check_qr() {
+  $(".qr").on("animationend", function() {
+    $(".phone").css("display", "block")
+  })
+}
+check_qr();
+// 扫码成功换照片
+function change_photos() {
+  $(".phone").on("animationend", function() {
+    $(".phone").attr("src", "success.PNG");
+  })
+}
+change_photos();
 
 
   

@@ -488,13 +488,12 @@ body {
     position: absolute;
     top: 25%;
     right: 5%;
-    background-color: rgba(82, 74, 96, 0.5);
     border-radius: 30px;
-    border: solid 2px rgba(118, 106, 137, 0.5);
+    border: solid 2px rgba(128, 121, 139, 0.5);
     box-shadow: 0 0 8px rgb(28, 28, 28);
     transform: translate(0, 50px);
     animation: showup 0.3s forwards;
-    background: radial-gradient(circle at 90% 90%, rgba(92, 86, 103, 0.5)10%, rgba(82, 74, 96, 0.5) 40%, rgba(101, 93, 118, 0.5) 60%,rgba(52, 47, 61, 0.5) 90%);
+    background: radial-gradient(circle at 90% 90%, rgba(92, 86, 103, 0.3)10%, rgba(82, 74, 96, 0.3) 40%, rgba(101, 93, 118, 0.3) 60%,rgba(52, 47, 61, 0.3) 90%);
 }
 @media screen and (min-width: 500px) {
     .card {
@@ -514,19 +513,29 @@ body {
         transform: translate(0, 0);
     }
 }
+.map_title {
+    width: 70%;
+    position: absolute;
+    top: 30px;
+    text-align: center;
+    color: rgb(219, 219, 219);
+    font-size: large;
+}
 
 .intermediary_chat_container {
     width: 60%;
     height: 80%;
     background-color: #dfe2e7;
     border: solid 1px #9c9a9a;
+    border-radius: 40px;
+    overflow: hidden;
     box-shadow: 0 0 5px #cdcbcb ;
 }
 
 .intermediary_header {
-    height: 10%;
+    height: 7%;
     margin: 0;
-    padding: 10px 0 0 20px;
+    padding: 20px 0 0 30px;
     font-size: large;
     border-bottom: solid 2px #cdced0;
     box-shadow: 0 10 4px #838597;
@@ -536,6 +545,7 @@ body {
     width: 100%;
     height: 90%;
     background-color: #d7dde7;
+    position: relative;
 }
 
 .intermediary_name {
@@ -547,9 +557,7 @@ body {
     margin: 0;
 }
 
-.intermediary_message_container {
-    width: 100%;
-}
+
 
 .intermediary_message {
     white-space: pre-line;
@@ -586,6 +594,12 @@ body {
     margin: 3% 25px 0 0;
 }
 
+.intermediary_message_container img {
+    width: 100px;
+    height: 100px;
+    margin: 3% 0 0 25px;
+}
+
 .pre_slide {
     transform: translate(0, 300px);
 }
@@ -596,6 +610,25 @@ body {
     position: relative;
 }
 
+.phone {
+    width: 150px;
+    height: 350px;
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+    transform: translate(50%, 0);
+    animation: phone_showup 1s forwards;
+}
+
+@keyframes phone_showup {
+    from {
+        bottom: 0;
+        right: 0;
+        width: 0;
+        height: 0;
+        transform: translate(0, 0);
+    }
+}
 #reature_background {
     width: 100%;
     height: 100%;
