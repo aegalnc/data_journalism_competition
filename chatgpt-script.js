@@ -465,8 +465,35 @@ function change_photos() {
 }
 change_photos();
 
+// 元素进入viewport固定
+function fix(last, next) {
+  window.addEventListener("scroll", () => {
+    const next_bottom = next.getBoundingClientRect().top - window.innerHeight;
+    console.log("next_bottom" + next_bottom);
+    if(next_bottom < 0 && next_bottom > (-window.innerHeight)) {
+      console.log("yes");
+      last.classList.add("fix");
+      last.style.opacity = 1 + next_bottom / window.innerHeight;
+    }
+    if (next_bottom > 0) {
+      last.classList.remove("fix");
+    }
+  })
+}
+fix($(".intermediary_fix_wrap")[0], $("#wechat_cover")[0]);
 
+// 元素出viewport逐渐变浅
+function fade_out(ele) {  
+    const height = parseFloat(window.getComputedStyle(ele).getPropertyValue("height").slice(0, -2));
+    window.addEventListener("scroll", () => {
+      if (ele.getBoundingClientRect().top < 0 && ele.getBoundingClientRect().top > (- height) ) {
+        const distance = -ele.getBoundingClientRect().top
+        ele.style.opacity = 1 - (distance / height);
+      }
+    })
   
+}
+fade_out($("#svg-object")[0]) ;
 
   
  

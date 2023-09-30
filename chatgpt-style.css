@@ -17,6 +17,12 @@ body {
     background-color: #222224;
 }
 
+.fix {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
 
 /* 模糊背景 */
 .blur_wrap {
@@ -452,15 +458,11 @@ body {
 
 
 /* 地图 */
-.map_wrap {
-    width: 100vw;
-    height: 100vh;
-    background-color: #222224;
-}
 .map {
     width: 100vw;
     height: 100vh;
     position: relative;
+    background-color: #222224;
 }
 #area {
     width: 100%;
@@ -521,7 +523,15 @@ body {
     color: rgb(219, 219, 219);
     font-size: large;
 }
-
+.intermediary_fix_wrap {
+    width: 100vw;
+    height: 200vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #222224;
+}
 .intermediary_chat_container {
     width: 60%;
     height: 80%;
@@ -602,6 +612,74 @@ body {
 
 .pre_slide {
     transform: translate(0, 300px);
+}
+
+.wechat_container {
+    width: 70%;
+    height: 80%;
+    background: linear-gradient(to bottom, #c7c5c5, transparent);
+    border-radius: 40px 40px 0 0;
+}
+
+.wechat_head {
+    height: 60px;
+    width: 100%;
+    border-bottom: solid 2px #a7a7a9;
+    display: grid;
+    grid-template-columns: 50px auto 40px;
+}
+.wechat_head img:first-child {
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+}
+#other {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+.wechat_head p {
+    text-align: center;
+}
+
+.wechat_messages {
+    width: 100%;
+}
+.in_wemessage_container {
+    display: flex;
+}
+
+.in_wemessage_container img {
+    width: 40px;
+    height: 40px;
+    margin: 20px 20px 20px 30px;
+}
+.in_wemessage_container p {
+    background-color: #dedee1;
+    padding: 10px ;
+    margin: 20px 30px 20px 0;
+    border-radius: 5px;
+    box-shadow:  1px 1px 2px  #858888;
+}
+
+.stu_wemessage_container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.stu_wemessage_container img {
+    width: 40px;
+    height: 40px;
+    margin: 20px 30px 20px 20px;
+}
+.stu_wemessage_container p {
+    background-color: #dedee1;
+    padding: 10px;
+    margin: 20px 0 20px 30px;
+    border-radius: 5px;
+    box-shadow:  1px 1px 2px  #858888;
 }
 
 .reality_virture {
