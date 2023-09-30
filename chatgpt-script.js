@@ -466,7 +466,7 @@ function change_photos() {
 change_photos();
 
 // 元素进入viewport固定
-function fix(last, next) {
+function fix_fade_out(last, next) {
   window.addEventListener("scroll", () => {
     const next_bottom = next.getBoundingClientRect().top - window.innerHeight;
     console.log("next_bottom" + next_bottom);
@@ -480,22 +480,47 @@ function fix(last, next) {
     }
   })
 }
-fix($(".intermediary_fix_wrap")[0], $("#wechat_cover")[0]);
+function fix(last, next) {
+  window.addEventListener("scroll", () => {
+    const next_bottom = next.getBoundingClientRect().top - window.innerHeight;
+    console.log("next_bottom" + next_bottom);
+    if(next_bottom < 0 && next_bottom > (-window.innerHeight)) {
+      console.log("yes");
+      last.classList.add("fix");
+    }
+    if (next_bottom > 0) {
+      last.classList.remove("fix");
+    }
+  })
+}
+fix_fade_out($(".intermediary_fix_wrap")[0], $("#wechat_cover")[0]);
+fix($("#title_one")[0], $("#para_1")[0]);
+fix($("#title_two")[0], $("#para_2")[0]);
 
 // 元素出viewport逐渐变浅
-function fade_out(ele) {  
-    const height = parseFloat(window.getComputedStyle(ele).getPropertyValue("height").slice(0, -2));
+function fade_out(ele) {
     window.addEventListener("scroll", () => {
-      if (ele.getBoundingClientRect().top < 0 && ele.getBoundingClientRect().top > (- height) ) {
-        const distance = -ele.getBoundingClientRect().top
-        ele.style.opacity = 1 - (distance / height);
+      const distance = -ele.getBoundingClientRect().top;
+      if (distance > 0 && distance <  (window.innerHeight / 4)) {
+        ele.style.opacity = 1 - (distance / (window.innerHeight / 4));
       }
     })
-  
+}
+function fade_in(ele) {
+  window.addEventListener("scroll", () => {
+    const distance = ele.getBoundingClientRect().top;
+    if (distance > 0 && distance <  (window.innerHeight / 4)) {
+      ele.style.opacity = 1 - (distance / (window.innerHeight / 4));
+    }
+  })
 }
 fade_out($("#svg-object")[0]) ;
+fade_in($("#svg-object")[0]) ;
 
-  
+$(".cases_paraghraph").each(function(index, element) {
+  fade_out(element);
+  fade_in(element);
+});
  
 
 

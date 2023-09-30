@@ -482,6 +482,7 @@ body {
 #svg-object {
     width: 100%;
     height: 100%;
+    opacity: 0;
 }
 
 .card {
@@ -613,12 +614,27 @@ body {
 .pre_slide {
     transform: translate(0, 300px);
 }
+.wechat_container_wrap {
+    width: 100vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #222224;
+}
 
 .wechat_container {
     width: 70%;
-    height: 80%;
+    height: 100vh;
     background: linear-gradient(to bottom, #c7c5c5, transparent);
     border-radius: 40px 40px 0 0;
+}
+.wechat_container_down {
+    width: 70%;
+    height: 100vh;
+    background: linear-gradient(to top, #c7c5c5, transparent);
+    border-radius: 0 0 40px 40px;
+    padding-top: 100px;
 }
 
 .wechat_head {
@@ -682,6 +698,45 @@ body {
     box-shadow:  1px 1px 2px  #858888;
 }
 
+.successful_cases {
+    width: 100vw;
+}
+.case {
+    background-color: #222224;
+    z-index: 1;
+    position: relative;
+}
+.case_2 {
+    z-index: 2;
+    position: relative;
+}
+.cases_title_wrap {
+    height: 100vh;
+    width: 20%; 
+}
+.cases_title {
+    height: 100vh;
+    width: 100%;
+    font-size: larger;
+    padding: 40px 0 0 30px;
+    color: #d2cece;
+    font-weight: 600;
+    margin: 0;
+}
+
+.cases_paraghraph {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20% 0 20%;
+    font-size: large;
+    color: #b7b7c4;
+    opacity: 0;
+}
+
 .reality_virture {
     width: 100vw;
     height: 297vh;
@@ -706,6 +761,10 @@ body {
         height: 0;
         transform: translate(0, 0);
     }
+}
+.background {
+    width: 100%;
+    background-color: #222224;
 }
 #reature_background {
     width: 100%;
