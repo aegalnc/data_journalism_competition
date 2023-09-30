@@ -425,9 +425,15 @@ card.addEventListener("click", () => {
         console.log(provinces);
         provinces.forEach(element => {
             const last_fill = element.style.fill;
-            element.addEventListener("mouseover", () => {
+            element.addEventListener("mouseover", (event) => {
                 element.style.fill = "pink";
                 card.style.display = "block";
+                var mouseX = event.clientX; // 获取鼠标相对于浏览器窗口左上角的横坐标
+                var mouseY = event.clientY; // 获取鼠标相对于浏览器窗口左上角的纵坐标
+
+                // 打印鼠标坐标
+                console.log("X坐标：" + mouseX);
+                console.log("Y坐标：" + mouseY);
                 for (var key in map) {
                   if (element.id === key) {
                     area.innerHTML = map[key].title;
@@ -466,26 +472,10 @@ function change_photos() {
 change_photos();
 
 // 元素进入viewport固定
-function fix_fade_out(last, next) {
-  window.addEventListener("scroll", () => {
-    const next_bottom = next.getBoundingClientRect().top - window.innerHeight;
-    console.log("next_bottom" + next_bottom);
-    if(next_bottom < 0 && next_bottom > (-window.innerHeight)) {
-      console.log("yes");
-      last.classList.add("fix");
-      last.style.opacity = 1 + next_bottom / window.innerHeight;
-    }
-    if (next_bottom > 0) {
-      last.classList.remove("fix");
-    }
-  })
-}
 function fix(last, next) {
   window.addEventListener("scroll", () => {
     const next_bottom = next.getBoundingClientRect().top - window.innerHeight;
-    console.log("next_bottom" + next_bottom);
     if(next_bottom < 0 && next_bottom > (-window.innerHeight)) {
-      console.log("yes");
       last.classList.add("fix");
     }
     if (next_bottom > 0) {
@@ -493,7 +483,6 @@ function fix(last, next) {
     }
   })
 }
-fix_fade_out($(".intermediary_fix_wrap")[0], $("#wechat_cover")[0]);
 fix($("#title_one")[0], $("#para_1")[0]);
 fix($("#title_two")[0], $("#para_2")[0]);
 

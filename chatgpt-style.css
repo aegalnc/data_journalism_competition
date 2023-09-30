@@ -636,6 +636,10 @@ body {
     border-radius: 0 0 40px 40px;
     padding-top: 100px;
 }
+.wechat_container_wrap_z {
+    position: relative;
+    z-index: 4;
+}
 
 .wechat_head {
     height: 60px;
