@@ -429,10 +429,7 @@ test.addEventListener("mouseover", (event) => {
     if (test.id === key) {
       area.innerHTML = map[key].title;
       map[key].company.forEach((ele, index) => {
-        const p = document.createElement("p");
-        card.appendChild(p);
-        p.classList.add("company");
-        p.innerHTML = ele;
+        
         p.addEventListener("mouseover", () => {
           secard.style.display = "block"; 
           representative.innerHTML = map[key].representative[index];
@@ -508,7 +505,12 @@ window.addEventListener("load", function() {
             for (var key in map) {
               if (element.id === key) {
                 area.innerHTML = map[key].title;
-                company.innerHTML = map[key].company;
+                map[key].data.forEach((ele, index) => {
+                  const p = document.createElement("p");
+                  card.appendChild(p);
+                  p.classList.add("company");
+                  p.innerHTML = ele.split(',')[1];
+                });
               }
             }
         })
