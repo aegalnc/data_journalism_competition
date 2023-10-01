@@ -501,7 +501,7 @@ window.addEventListener("load", function() {
         }
         if (!on_ele && !on_card && !on_secard) {
           card.style.display = "none";
-          const companies = card.getElementsByClassName("company");
+          const companies = Array.from(card.getElementsByClassName("company"));
           companies.each((index, ele) => {
             card.remove(ele);
           })
