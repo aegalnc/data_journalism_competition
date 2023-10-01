@@ -106,7 +106,7 @@ var myChart = echarts.init(chartDom);
 var option;
 
 myChart.showLoading();
-$.get('https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json', function (geoJson) {
+$.get('100000_full.json', function (geoJson) {
   myChart.hideLoading();
   echarts.registerMap('China', geoJson);
   option = {
