@@ -426,18 +426,25 @@ window.addEventListener("load", function() {
         element.style.fill = "pink";
         var mouseX = event.clientX; // 获取鼠标相对于浏览器窗口左上角的横坐标
         var mouseY = event.clientY; // 获取鼠标相对于浏览器窗口左上角的纵坐标
-        var left, top;
-        if (mouseX < window.innerWidth / 2) {
+        var left, top , right, bottom;
+        if ((mouseX < (window.innerWidth / 2)) && (mouseY < (window.innerHeight / 2))) {
           left = mouseX;
           top = mouseY - test.getBoundingClientRect().top;
-          console.log("top"+top)
-          console.log("left"+left)
-        } else {
-          left = mouseX - 250;
+          card_wrap.setAttribute("style", "left: " + left + "px; " + "top: " + top + "px;");
+        } else if((mouseX > (window.innerWidth / 2)) && (mouseY < (window.innerHeight / 2))) {
+          right = window.innerWidth - mouseX;
           top = mouseY - test.getBoundingClientRect().top;
+          card_wrap.setAttribute("style", "right: " + right + "px; " + "top: " + top + "px;");
+        } else if((mouseX < (window.innerWidth / 2)) && (mouseY > (window.innerHeight / 2))) {
+          left = mouseX;
+          bottom = window.innerHeight - (mouseY - test.getBoundingClientRect().top);
+          card_wrap.setAttribute("style", "left: " + left + "px; " + "bottom: " + bottom + "px;");
+        } else {
+          right = window.innerWidth - mouseX;
+          bottom = window.innerHeight - (mouseY - test.getBoundingClientRect().top);
+          card_wrap.setAttribute("style", "right: " + right + "px; " + "bottom: " + bottom + "px;");
         }
-        card_wrap.setAttribute("style", "left: " + left + "px;");
-        card_wrap.setAttribute("style", "top: " + top + "px;");
+        
         card.style.display = "block";
         
         for (var key in map) {
