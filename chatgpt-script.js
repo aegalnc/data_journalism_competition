@@ -414,68 +414,6 @@ var on_card = false;
 var on_p = false;
 var on_ele = false;
 
-test.addEventListener("mouseover", (event) => {
-  on_ele = true;
-
-  var mouseX = event.clientX; // 获取鼠标相对于浏览器窗口左上角的横坐标
-  var mouseY = event.clientY; // 获取鼠标相对于浏览器窗口左上角的纵坐标
-  // 打印鼠标坐标
-  console.log("X坐标：" + mouseX);
-  console.log("Y坐标：" + mouseY);
-
-  
-  
-  for (var key in map) {
-    if (test.id === key) {
-      area.innerHTML = map[key].title;
-      map[key].company.forEach((ele, index) => {
-        
-        p.addEventListener("mouseover", () => {
-          secard.style.display = "block"; 
-          representative.innerHTML = map[key].representative[index];
-          on_p = true; 
-        })
-        p.addEventListener("mouseleave", () => {
-          on_p = false;
-        })
-        
-      })
-    }
-  }
-  secard.addEventListener("mouseover", () => {
-    on_secard = true;
-    console.log("on_secard" + on_secard)
-  })
-  secard.addEventListener("mouseleave", () => {
-    on_secard = false;
-    console.log("on_secard" + on_secard)
-  })
-  card.addEventListener("mouseover", () => {
-    on_card = true;
-    console.log("on_card" + on_card)
-  })
-  card.addEventListener("mouseleave", () => {
-    on_card = false;
-    console.log("on_card" + on_card)
-  })
- 
-});
-test.addEventListener("mouseleave", () => {
-  on_ele = false;
-  
-})
-window.addEventListener("mousemove", () => {
-  setTimeout(() => {
-    if (!on_secard && !on_p) {
-      secard.style.display = "none";
-    }
-    if (!on_ele && !on_card && !on_secard) {
-      card.style.display = "none";
-    }
-  }, 100)
-  
-})
-
 window.addEventListener("load", function() {
     const svgDocument = svgObject.contentDocument;
     console.log(svgObject);
@@ -483,45 +421,85 @@ window.addEventListener("load", function() {
     var provinces = Array.from(svgDocument.getElementsByClassName("province"));
     console.log(provinces);
     provinces.forEach(element => {
-        const last_fill = element.style.fill;
-        element.addEventListener("mouseover", (event) => {
-            element.style.fill = "pink";
-            var mouseX = event.clientX; // 获取鼠标相对于浏览器窗口左上角的横坐标
-            var mouseY = event.clientY; // 获取鼠标相对于浏览器窗口左上角的纵坐标
-            var left, top;
-            if (mouseX < window.innerWidth / 2) {
-              left = mouseX;
-              top = mouseY - test.getBoundingClientRect().top;
-              console.log("top"+top)
-              console.log("left"+left)
-            } else {
-              left = mouseX - 250;
-              top = mouseY - test.getBoundingClientRect().top;
-            }
-            card_wrap.setAttribute("style", "left: " + left + "px;");
-            card_wrap.setAttribute("style", "top: " + top + "px;");
-            card.style.display = "block";
-            
-            for (var key in map) {
-              if (element.id === key) {
-                area.innerHTML = map[key].title;
-                map[key].data.forEach((ele, index) => {
-                  const p = document.createElement("p");
-                  card.appendChild(p);
-                  p.classList.add("company");
-                  p.innerHTML = ele.split(',')[0];
-                });
-              }
-            }
-        })
-        element.addEventListener("mouseleave", () => {
-            element.style.fill = last_fill;
-            card.style.display = "none";
-            area.innerHTML = '';
-            company.innerHTML = '';
-        })
+      const last_fill = element.style.fill;
+      element.addEventListener("mouseover", (event) => {
+        element.style.fill = "pink";
+        var mouseX = event.clientX; // 获取鼠标相对于浏览器窗口左上角的横坐标
+        var mouseY = event.clientY; // 获取鼠标相对于浏览器窗口左上角的纵坐标
+        var left, top;
+        if (mouseX < window.innerWidth / 2) {
+          left = mouseX;
+          top = mouseY - test.getBoundingClientRect().top;
+          console.log("top"+top)
+          console.log("left"+left)
+        } else {
+          left = mouseX - 250;
+          top = mouseY - test.getBoundingClientRect().top;
+        }
+        card_wrap.setAttribute("style", "left: " + left + "px;");
+        card_wrap.setAttribute("style", "top: " + top + "px;");
+        card.style.display = "block";
+        
+        for (var key in map) {
+          if (element.id === key) {
+            area.innerHTML = map[key].title;
+            map[key].data.forEach((ele, index) => {
+              const p = document.createElement("p");
+              card.appendChild(p);
+              p.classList.add("company");
+              p.innerHTML = ele.split(',')[0];
+              p.addEventListener("mouseover", () => {
+                secard.style.display = "block"; 
+                representative.innerHTML = ele.split(',')[1];
+                industry.innerHTML = ele.split(',')[4];
+                city.innerHTML = ele.split(',')[3];
+                on_p = true;
+              })
+              p.addEventListener("mouseleave", () => {
+                on_p = false;
+              })
+            });
+          }
+        }          
+      })
+
+      element.addEventListener("mouseleave", () => {
+        element.style.fill = last_fill;
+        on_ele = false;
+        area.innerHTML = '';
+      })
+
     });
+
+    secard.addEventListener("mouseover", () => {
+      on_secard = true;
+      console.log("on_secard" + on_secard)
+    })
+    secard.addEventListener("mouseleave", () => {
+      on_secard = false;
+      console.log("on_secard" + on_secard)
+    })
+    card.addEventListener("mouseover", () => {
+      on_card = true;
+      console.log("on_card" + on_card)
+    })
+    card.addEventListener("mouseleave", () => {
+      on_card = false;
+      console.log("on_card" + on_card)
+    })
+    window.addEventListener("mousemove", () => {
+      setTimeout(() => {
+        if (!on_secard && !on_p) {
+          secard.style.display = "none";
+        }
+        if (!on_ele && !on_card && !on_secard) {
+          card.style.display = "none";
+        }
+      }, 100)
+      
+    })
 });
+
   const map = {
     "Beijing": {
       "title": "北京市",
