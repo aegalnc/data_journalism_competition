@@ -445,7 +445,7 @@ window.addEventListener("load", function() {
           card_wrap.setAttribute("style", "right: " + right + "px; " + "bottom: " + bottom + "px;");
         }
         
-        card.style.display = "block";
+        card_wrap.style.display = "block";
         
         for (var key in map) {
           if (element.id === key) {
@@ -455,15 +455,11 @@ window.addEventListener("load", function() {
               card.appendChild(p);
               p.classList.add("company");
               p.innerHTML = ele.split(',')[0];
-              p.addEventListener("mouseover", () => {
+              p.addEventListener("click", () => {
                 secard.style.display = "block"; 
                 representative.innerHTML = ele.split(',')[1];
                 industry.innerHTML = ele.split(',')[4];
                 city.innerHTML = ele.split(',')[3];
-                on_p = true;
-              })
-              p.addEventListener("mouseleave", () => {
-                on_p = false;
               })
             });
           }
@@ -478,29 +474,18 @@ window.addEventListener("load", function() {
 
     });
 
-    secard.addEventListener("mouseover", () => {
-      on_secard = true;
-      console.log("on_secard" + on_secard)
-    })
-    secard.addEventListener("mouseleave", () => {
-      on_secard = false;
-      console.log("on_secard" + on_secard)
-    })
-    card.addEventListener("mouseover", () => {
+    card_wrap.addEventListener("mouseover", () => {
       on_card = true;
       console.log("on_card" + on_card)
     })
-    card.addEventListener("mouseleave", () => {
+    card_wrap.addEventListener("mouseleave", () => {
       on_card = false;
       console.log("on_card" + on_card)
     })
     window.addEventListener("mousemove", () => {
       setTimeout(() => {
-        if (!on_secard && !on_p) {
-          secard.style.display = "none";
-        }
-        if (!on_ele && !on_card && !on_secard) {
-          card.style.display = "none";
+        if (!on_ele && !on_card) {
+          card_wrap.style.display = "none";
           const companies = Array.from(card.getElementsByClassName("company"));
           companies.forEach((ele, index) => {
             card.remove(ele);
