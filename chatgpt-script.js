@@ -502,7 +502,7 @@ window.addEventListener("load", function() {
         if (!on_ele && !on_card && !on_secard) {
           card.style.display = "none";
           const companies = Array.from(card.getElementsByClassName("company"));
-          companies.each((index, ele) => {
+          companies.forEach((ele, index) => {
             card.remove(ele);
           })
 
