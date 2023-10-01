@@ -489,7 +489,7 @@ window.addEventListener("load", function() {
             var mouseX = event.clientX; // 获取鼠标相对于浏览器窗口左上角的横坐标
             var mouseY = event.clientY; // 获取鼠标相对于浏览器窗口左上角的纵坐标
             var left, top;
-            if (mouseX < window.innerWidth) {
+            if (mouseX < window.innerWidth / 2) {
               left = mouseX;
               top = mouseY - test.getBoundingClientRect().top;
               console.log("top"+top)
@@ -509,7 +509,7 @@ window.addEventListener("load", function() {
                   const p = document.createElement("p");
                   card.appendChild(p);
                   p.classList.add("company");
-                  p.innerHTML = ele.split(',')[1];
+                  p.innerHTML = ele.split(',')[0];
                 });
               }
             }
