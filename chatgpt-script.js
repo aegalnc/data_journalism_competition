@@ -1,3 +1,4 @@
+
 // 获得DOM元素
 const chatgpt_message_1_p = document.getElementById("chatgpt-message-1");
 const user_message_1_p = document.getElementById("user-message-1");
@@ -399,62 +400,295 @@ control_position();
 // 地图覆盖出现卡片
 const svgObject = document.getElementById('svg-object');
 const card = document.getElementsByClassName("card")[0];
+const card_wrap = document.getElementsByClassName("card_wrap")[0];
 const area = document.getElementById("area");
 const company = document.getElementById("company");
-/*
+const secard = document.getElementsByClassName("secard")[0];
+const industry  = document.getElementsByClassName("industry")[0];
+const date = document.getElementsByClassName("date")[0];
+const representative = document.getElementsByClassName("representative")[0];
+const city = document.getElementsByClassName("city")[0];
 const test = document.getElementsByClassName("test")[0];
-test.addEventListener("click", () => {
-  card.style.display = "block";
+var on_secard = false;
+var on_card = false;
+var on_p = false;
+var on_ele = false;
+
+test.addEventListener("mouseover", (event) => {
+  on_ele = true;
+
+  var mouseX = event.clientX; // 获取鼠标相对于浏览器窗口左上角的横坐标
+  var mouseY = event.clientY; // 获取鼠标相对于浏览器窗口左上角的纵坐标
+  // 打印鼠标坐标
+  console.log("X坐标：" + mouseX);
+  console.log("Y坐标：" + mouseY);
+
+  
+  
   for (var key in map) {
     if (test.id === key) {
       area.innerHTML = map[key].title;
-      company.innerHTML = map[key].company;
-    console.log("wo");
+      map[key].company.forEach((ele, index) => {
+        const p = document.createElement("p");
+        card.appendChild(p);
+        p.classList.add("company");
+        p.innerHTML = ele;
+        p.addEventListener("mouseover", () => {
+          secard.style.display = "block"; 
+          representative.innerHTML = map[key].representative[index];
+          on_p = true; 
+        })
+        p.addEventListener("mouseleave", () => {
+          on_p = false;
+        })
+        
+      })
     }
   }
+  secard.addEventListener("mouseover", () => {
+    on_secard = true;
+    console.log("on_secard" + on_secard)
+  })
+  secard.addEventListener("mouseleave", () => {
+    on_secard = false;
+    console.log("on_secard" + on_secard)
+  })
+  card.addEventListener("mouseover", () => {
+    on_card = true;
+    console.log("on_card" + on_card)
+  })
+  card.addEventListener("mouseleave", () => {
+    on_card = false;
+    console.log("on_card" + on_card)
+  })
+ 
+});
+test.addEventListener("mouseleave", () => {
+  on_ele = false;
+  
 })
-card.addEventListener("click", () => {
-  card.style.display = "none";
-})*/
+window.addEventListener("mousemove", () => {
+  setTimeout(() => {
+    if (!on_secard && !on_p) {
+      secard.style.display = "none";
+    }
+    if (!on_ele && !on_card && !on_secard) {
+      card.style.display = "none";
+    }
+  }, 100)
+  
+})
 
-    window.addEventListener("load", function() {
-        const svgDocument = svgObject.contentDocument;
-        console.log(svgObject);
-        console.log(svgDocument);
-        var provinces = Array.from(svgDocument.getElementsByClassName("province"));
-        console.log(provinces);
-        provinces.forEach(element => {
-            const last_fill = element.style.fill;
-            element.addEventListener("mouseover", (event) => {
-                element.style.fill = "pink";
-                card.style.display = "block";
-                var mouseX = event.clientX; // 获取鼠标相对于浏览器窗口左上角的横坐标
-                var mouseY = event.clientY; // 获取鼠标相对于浏览器窗口左上角的纵坐标
-
-                // 打印鼠标坐标
-                console.log("X坐标：" + mouseX);
-                console.log("Y坐标：" + mouseY);
-                for (var key in map) {
-                  if (element.id === key) {
-                    area.innerHTML = map[key].title;
-                    company.innerHTML = map[key].company;
-                  }
-                }
-            })
-            element.addEventListener("mouseleave", () => {
-                element.style.fill = last_fill;
-                card.style.display = "none";
-                area.innerHTML = '';
-                company.innerHTML = '';
-            })
-        });
+window.addEventListener("load", function() {
+    const svgDocument = svgObject.contentDocument;
+    console.log(svgObject);
+    console.log(svgDocument);
+    var provinces = Array.from(svgDocument.getElementsByClassName("province"));
+    console.log(provinces);
+    provinces.forEach(element => {
+        const last_fill = element.style.fill;
+        element.addEventListener("mouseover", (event) => {
+            element.style.fill = "pink";
+            var mouseX = event.clientX; // 获取鼠标相对于浏览器窗口左上角的横坐标
+            var mouseY = event.clientY; // 获取鼠标相对于浏览器窗口左上角的纵坐标
+            var left, top;
+            if (mouseX < window.innerWidth) {
+              left = mouseX;
+              top = mouseY - test.getBoundingClientRect().top;
+              console.log("top"+top)
+              console.log("left"+left)
+            } else {
+              left = mouseX - 250;
+              top = mouseY - test.getBoundingClientRect().top;
+            }
+            card_wrap.setAttribute("style", "left: " + left + "px;");
+            card_wrap.setAttribute("style", "top: " + top + "px;");
+            card.style.display = "block";
+            
+            for (var key in map) {
+              if (element.id === key) {
+                area.innerHTML = map[key].title;
+                company.innerHTML = map[key].company;
+              }
+            }
+        })
+        element.addEventListener("mouseleave", () => {
+            element.style.fill = last_fill;
+            card.style.display = "none";
+            area.innerHTML = '';
+            company.innerHTML = '';
+        })
     });
-const map = {
-  "Shanxi": {
-    "title": "Shanxi",
-    "company": "企业a\n企业b"
-  }
-}
+});
+  const map = {
+    "Beijing": {
+      "title": "北京市",
+      "data": [
+        "实习（北京）科技有限公司,范永杰,北京市,北京市,科技推广和应用服务业",
+        "独立说教育科技（北京）有限公司,刘水音,北京市,北京市,科技推广和应用服务业",
+        "三节课信息咨询（北京）有限公司,后显慧,北京市,北京市,商务服务业",
+        "北京亨瑞博文教育咨询有限责任公司,邹雪,北京市,北京市,教育",
+        "北京艾维联盟教育咨询有限公司,解樵,北京市,北京市,教育",
+        "北京大视界精英信息科技有限公司,刘文秀,北京市,北京市,软件和信息技术服务业",
+        "翰泊铭途教育科技（北京）有限公司,姚华宇,北京市,北京市,科技推广和应用服务业",
+        "易职（北京）科教咨询有限公司,刘腾然,北京市,北京市,教育",
+        "北京爱思益咨询有限公司,孙静博,北京市,北京市,商务服务业",
+        "北京多知科技有限公司,李好宇,北京市,北京市,科技推广和应用服务业",
+        "北京旷智信息科技有限公司,胡海涛,北京市,北京市,科技推广和应用服务业",
+        "北京菜鸟无忧教育科技有限公司,袁军,北京市,北京市,软件和信息技术服务业",
+        "北京鸥飞科技有限公司,魏冰清,北京市,北京市,科技推广和应用服务业",
+        "棕榈大道教育科技（北京）有限公司,朱殷,北京市,北京市,科技推广和应用服务业",
+        "风灵创景（北京）技术有限公司,李媛,北京市,北京市,科技推广和应用服务业",
+        "职派咨询（北京）有限责任公司,魏铼,北京市,北京市,商务服务业",
+        "北京思享纵横教育科技有限公司,印崇萱,北京市,北京市,科技推广和应用服务业",
+        "北京观海云远信息科技有限责任公司,胡华英,北京市,北京市,科技推广和应用服务业",
+        "启思逐梦教育咨询（北京）有限公司,金思前,北京市,北京市,商务服务业",
+        "高霖海拓（北京）教育科技有限公司,李旺,北京市,北京市,科技推广和应用服务业",
+        "北京律匠国际教育咨询有限公司,徐玲巧,北京市,北京市,教育",
+        "北京欧奇迹网络科技有限公司,常冬,北京市,北京市,科技推广和应用服务业",
+        "时代兴华（北京）教育科技有限公司,高杰,北京市,北京市,科技推广和应用服务业"
+      ]
+  },
+  "Anhui": {
+    "title": "安徽省",
+    "data": [
+      "安徽思杰拓信息科技有限公司,翁梅玉,安徽省,合肥市,科技推广和应用服务业"
+    ]
+  },
+  "Guangdong": {
+    "title": "广东省",
+    "data": [
+      "深圳永葆好奇科技有限公司,李亚平,广东省,深圳市,软件和信息技术服务业",
+      "深圳市远界管理咨询有限公司,袁宇立,广东省,深圳市,商务服务业",
+      "广州市欧飓移民咨询有限公司,资晓利,广东省,广州市,商务服务业",
+      "圈里网络科技（广州）有限公司,郭镇龙,广东省,广州市,研究和试验发展",
+      "深圳市麦芽求职教育科技有限公司,任重,广东省,深圳市,软件和信息技术服务业",
+      "深圳找份工作科技有限公司,杨延霖,广东省,深圳市,互联网和相关服务",
+      "海道（深圳）教育科技有限责任公司,王为,广东省,深圳市,软件和信息技术服务业",
+      "深圳市凯为咨询有限公司,邱康惠,广东省,深圳市,商务服务业",
+      "广州优量传媒科技有限公司,黄嘉俊,广东省,广州市,软件和信息技术服务业",
+      "广州精通教育科技有限公司,刘维嘉,广东省,广州市,研究和试验发展",
+      "深圳己任教育科技有限公司,陈颖昌,广东省,深圳市,教育",
+      "广州市有位来教育咨询有限公司,李志谦,广东省,广州市,商务服务业",
+      "深圳前海美新咨询有限公司,曾婕,广东省,深圳市,商务服务业",
+      "深圳市职询信息咨询有限公司,白淑珍,广东省,深圳市,商务服务业",
+      "深圳市数字牧民文化传播有限公司,江丽婕,广东省,深圳市,广播、电视、电影和录音制作业"
+    ]
+  },
+  "Hubei": {
+    "title": "湖北省",
+    "data": [
+      "武汉鸣鸾信息科技有限公司,王欣欣,湖北省,武汉市,研究和试验发展",
+      "入行（武汉）教育科技有限公司,杨昊,湖北省,武汉市,软件和信息技术服务业"
+    ]
+  },
+  "Shanghai": {
+    "title": "上海市",
+    "data": [
+      "上海高顿教育科技有限公司,李锋,上海市,上海市,教育",
+      "迈才（上海）信息科技有限公司,周博文,上海市,上海市,软件和信息技术服务业",
+      "上海简猎信息科技有限公司,马晓,上海市,上海市,专业技术服务业",
+      "上海泽稷教育培训有限公司,蒋望,上海市,上海市,教育",
+      "上海学无国界教育科技股份有限公司,郝斐,上海市,上海市,商务服务业",
+      "上海微令信息科技有限公司,彭一楠,上海市,上海市,专业技术服务业",
+      "上海乔布堂信息科技有限公司,马德远,上海市,上海市,科技推广和应用服务业",
+      "上海君尧文化传播有限公司,周博文,上海市,上海市,商务服务业",
+      "职优你（上海）教育科技有限公司,余佳,上海市,上海市,科技推广和应用服务业",
+      "上海斟学商务信息咨询中心（有限合伙）,孙居然,上海市,上海市,商务服务业",
+      "熙南（上海）网络科技有限公司,蒋志勇,上海市,上海市,科技推广和应用服务业",
+      "上海智遇信息科技有限公司,刘文秀,上海市,上海市,软件和信息技术服务业",
+      "上海泛远志商务咨询有限公司,黄弘贇,上海市,上海市,专业技术服务业",
+      "上海想当年信息技术有限公司,李健良,上海市,上海市,软件和信息技术服务业",
+      "上海职橙信息科技有限公司,李玉岚,上海市,上海市,软件和信息技术服务业",
+      "上海职创教育科技有限公司,宗启航,上海市,上海市,科技推广和应用服务业",
+      "上海逐元教育科技有限公司,袁振华,上海市,上海市,科技推广和应用服务业",
+      "上海凯洛格信息科技有限公司,卢明霞,上海市,上海市,科技推广和应用服务业",
+      "上海顶博商务咨询有限公司,李鹤,上海市,上海市,商务服务业",
+      "善谋信息科技（上海）有限公司,莫晓骏,上海市,上海市,软件和信息技术服务业",
+      "上海琛智教育科技有限公司,程名,上海市,上海市,专业技术服务业",
+      "起向教育科技（上海）有限公司,孔宇,上海市,上海市,科技推广和应用服务业",
+      "上海彧梦信息科技有限公司,孟庆春,上海市,上海市,软件和信息技术服务业",
+      "上海藤智教育科技有限公司,徐贺平,上海市,上海市,科技推广和应用服务业",
+      "上海乐留教育科技有限公司,何星慷,上海市,上海市,科技推广和应用服务业",
+      "上海洛素文化艺术有限公司,陈立沂麟,上海市,上海市,文化艺术业",
+      "上海优等申出国留学服务有限公司,周杰,上海市,上海市,教育"
+    ]
+  },
+  "Sichuan": {
+    "title": "四川省",
+    "data": [
+      "成都先胜信息科技有限公司,王梓帆,四川省,成都市,软件和信息技术服务业",
+      "成都来者教育科技有限公司,吕勇,四川省,成都市,教育",
+      "成都职梦商务信息咨询有限公司,吕勇,四川省,成都市,商务服务业",
+      "盛世创客（成都）科技有限公司,陶然,四川省,成都市,广播、电视、电影和录音制作业",
+      "成都焉得科技有限公司,唐黄铎,四川省,成都市,软件和信息技术服务业",
+      "成都觅新教育咨询有限公司,王军,四川省,成都市,商务服务业",
+      "四川名远环球教育科技有限公司,易秋雨,四川省,成都市,教育"
+    ]
+  },
+  "Liaoning": {
+    "title": "辽宁省",
+    "data": [
+      "互联派教育科技（大连）有限公司,孟令峰,辽宁省,大连市,软件和信息技术服务业",
+      "沈阳久极文化传媒有限公司,张博,辽宁省,沈阳市,文化艺术业",
+      "大连思成教育咨询有限公司,孔祥,辽宁省,大连市,教育",
+      "大连智科咨询顾问有限公司,陈池,辽宁省,大连市,商务服务业",
+      "沈阳即刻职业中介服务有限公司,沙金,辽宁省,沈阳市,商务服务业",
+      "海马课堂网络科技（大连）有限公司,曲涵,辽宁省,大连市,科技推广和应用服务业",
+      "大连直通硅谷教育咨询有限公司,张桂香,辽宁省,大连市,教育",
+      "马可咨询服务（大连）有限公司,姜福宇,辽宁省,大连市,商务服务业"
+    ]
+  },
+  "Jiangsu": {
+    "title": "江苏省",
+    "data": [
+      "南京君阳志恒信息科技有限公司,周志俊,江苏省,南京市,软件和信息技术服务业",
+      "南京冠升杰咨询有限公司,张全霞,江苏省,南京市,教育",
+      "南京索沃企业管理有限公司,唐海艳,江苏省,南京市, 商务服务业",
+      "南京才多多网络科技有限公司,刘海,江苏省,南京市,软件和信息技术服务业",
+      "南京职芽网络科技有限公司,杜鹏程,江苏省,南京市,软件和信息技术服务业"
+    ]
+  },
+  "Shandong": {
+    "title": "山东省",
+    "data": [
+      "青岛思语信息科技有限公司,马列伟,山东省,青岛市,软件和信息技术服务业",
+      "山东校聘信息技术有限公司,苏志南,山东省,济南市,软件和信息技术服务业",
+      "山东一亩三分地网络科技有限公司,王明祥,山东省,烟台市,软件和信息技术服务业"
+    ]
+  },
+  "Tianjin": {
+    "title": "天津市",
+    "data": [
+      "御峰金服（天津）有限公司,王玉峰,天津市,天津市,其他金融业",
+      "天津立夫特教育咨询有限公司,周鑫,天津市,天津市,商务服务业"
+    ]
+  },
+  "Zhejiang": {
+    "title": "浙江省",
+    "data": [
+      "浙江校友邦科技有限公司,陈小玲,浙江省,金华市,教育",
+      "杭州开课吧科技有限公司,方业昌,浙江省,杭州市,科技推广和应用服务业",
+      "浙江新通教育科技股份有限公司,麻亚炜,浙江省,杭州市,软件和信息技术服务业",
+      "杭州睿博信息咨询有限公司,LIU YI,浙江省,杭州市,商务服务业",
+      "杭州乙霖科技有限公司,杨时莲,浙江省,杭州市,软件和信息技术服务业"
+    ]
+  },
+  "Fujian": {
+    "title": "福建省",
+    "data": [
+      "坚果求职（厦门）教育信息咨询有限公司,苏凯贤,福建省,厦门市,教育",
+      "厦门瑾往思教育咨询有限公司,陈俊宏,福建省,厦门市,教育"
+    ]
+  },
+  "Jilin": {
+    "title": "吉林省",
+    "data": [
+      "途美彼岸长春教育咨询有限公司,王晓峰,吉林省,长春市,教育"
+    ]
+  }, 
+  
+}    
 
 // 检查二维码出现
 function check_qr() {
@@ -485,6 +719,7 @@ function fix(last, next) {
 }
 fix($("#title_one")[0], $("#para_1")[0]);
 fix($("#title_two")[0], $("#para_2")[0]);
+fix($(".intermediary_fix_wrap")[0], $(".wechat_container")[0])
 
 // 元素出viewport逐渐变浅
 function fade_out(ele) {
