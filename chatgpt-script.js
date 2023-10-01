@@ -494,6 +494,11 @@ window.addEventListener("load", function() {
         }
         if (!on_ele && !on_card && !on_secard) {
           card.style.display = "none";
+          const companies = card.getElementsByClassName("company");
+          companies.forEach((ele, index) => {
+            card.remove(ele);
+          })
+
         }
       }, 100)
       
