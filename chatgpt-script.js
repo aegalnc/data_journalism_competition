@@ -377,28 +377,43 @@ setInterval(() => {
 }, 500) */
 
 // 控制小人位置
-function control_position() {
-  console.log("ok");
-  const reature = document.getElementById("reature_background");
-  const reality_charactor = document.getElementById("reality_charactor");
+// function control_position() {
+//   console.log("ok");
+//   const reature = document.getElementById("reature_background");
+//   const reality_charactor = document.getElementById("reality_charactor");
 
-  window.addEventListener("scroll", () => {
+//   window.addEventListener("scroll", () => {
 
-    const rect = reature.getBoundingClientRect();
-    const end_line = 2 * window.innerHeight;
-    const rect_top = - rect.top;
+//     const rect = reature.getBoundingClientRect();
+//     const end_line = 2 * window.innerHeight;
+//     const rect_top = - rect.top;
 
-    if (rect_top >= 0 && rect_top <= end_line) {
-      const pre_top = window.innerHeight;
-      const pre_right = window.innerWidth / 3;
-      const new_top = pre_top + rect_top;
-      const new_right = pre_right + (window.innerWidth / 6) / (2 * window.innerHeight) * rect_top;
-      console.log("new_top" + new_top)
-      reality_charactor.setAttribute("style", "top: " + new_top + "px; right: " + new_right + "px;")
-    }
-  })
-}
-control_position();
+//     if (rect_top >= 0 && rect_top <= end_line) {
+//       const pre_top = window.innerHeight;
+//       const pre_right = window.innerWidth / 3;
+//       const new_top = pre_top + rect_top;
+//       const new_right = pre_right + (window.innerWidth / 6) / (2 * window.innerHeight) * rect_top;
+//       console.log("new_top" + new_top)
+//       reality_charactor.setAttribute("style", "top: " + new_top + "px; right: " + new_right + "px;")
+//     }
+//   })
+// }
+// control_position();
+
+$(document).ready(function() {
+  $(window).scroll(function() {
+    $(".pure_student").each(function(index, element) {
+      var rect = element.getBoundingClientRect();
+      if (rect.top >= 0 && rect.top <= window.innerHeight) {
+        $(element).addClass("pure_student_animation");
+      } else {
+        $(element).removeClass("pure_student_animation");
+      }
+    });
+  });
+});
+
+
 
 // 地图覆盖出现卡片
 const svgObject = document.getElementById('svg-object');
@@ -718,8 +733,8 @@ function fade_in(ele) {
     }
   })
 }
-fade_out($("#svg-object")[0]) ;
-fade_in($("#svg-object")[0]) ;
+// fade_out($("#svg-object")[0]) ;
+// fade_in($("#svg-object")[0]) ;
 
 $(".cases_paraghraph").each(function(index, element) {
   fade_out(element);
