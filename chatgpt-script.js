@@ -31,23 +31,23 @@ const major = {
     "passage_array": [
       {
         "img": "",
-        "title": "",
-        "herf": ""
+        "title": "中金实习内推 | 中金行研实习生招聘",
+        "href": "https://mp.weixin.qq.com/s/_YVV05yEWSq3ZGwoG-5FUw"
       },
       {
         "img": "",
         "title": "",
-        "herf": ""
+        "href": ""
       },
       {
         "img": "",
         "title": "",
-        "herf": ""
+        "href": ""
       },
       {
         "img": "",
         "title": "",
-        "herf": ""
+        "href": ""
       },
       {
         "img": "",
@@ -62,27 +62,27 @@ const major = {
       {
         "img": "",
         "title": "",
-        "herf": ""
+        "href": ""
       },
       {
         "img": "",
         "title": "",
-        "herf": ""
+        "href": ""
       },
       {
         "img": "",
         "title": "",
-        "herf": ""
+        "href": ""
       },
       {
         "img": "",
         "title": "",
-        "herf": ""
+        "href": ""
       },
       {
         "img": "",
         "title": "",
-        "herf": ""
+        "href": ""
       },
     ]
   }
@@ -215,6 +215,7 @@ send_button.addEventListener("animationend", () => {
     setTimeout(() => {
       const span = document.getElementsByClassName("title")[0];
       span.classList.add("magnify");
+      $("#after_title_blur").addClass("after_title_blur");
       span.addEventListener("animationend", () => {
         $(".prompt").eq(0).css("display", "block");
       })
@@ -223,6 +224,7 @@ send_button.addEventListener("animationend", () => {
 })
 
 $(".prompt").eq(0).click(() => {
+  $(".after_title_blur").remove();
   $(".user-message-container").remove();
   $(".chatgpt-message-container").remove();
   $(".prompt").eq(0).css("display", "none");
@@ -245,10 +247,11 @@ $(".prompt").eq(0).click(() => {
         passage_image.classList.add("passage_image");
         passage.appendChild(passage_image);
         passage_image.src = major[str_major].passage_array[i].img;
-        const passage_title = document.createElement('p');
+        const passage_title = document.createElement('a');
         passage_title.classList.add("passage_title");
         passage.appendChild(passage_title);
         passage_title.innerHTML = major[str_major].passage_array[i].title;
+        passage_title.href = major[str_major].passage_array[i].href
       }
   })
 })
