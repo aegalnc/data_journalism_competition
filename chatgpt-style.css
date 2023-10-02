@@ -285,6 +285,7 @@ body {
         transform: translate(-50%, -50%);
         font-size: 7em;
         font-family: 'Zhimingxing', sans-serif;
+        
     }
 }
 @media screen and (min-width: 500px) {
@@ -294,6 +295,7 @@ body {
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 5em;
+            font-family: 'Zhimingxing', sans-serif;
         }
     }
 }
