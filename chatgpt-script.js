@@ -30,29 +30,29 @@ const major = {
     "user_message_1": "我是商科专业的学生，我还没有找到实习该怎么办啊？",
     "passage_array": [
       {
-        "img": "",
+        "img": "b1.jpg",
         "title": "中金实习内推 | 中金行研实习生招聘",
         "href": "https://mp.weixin.qq.com/s/_YVV05yEWSq3ZGwoG-5FUw"
       },
       {
-        "img": "",
-        "title": "",
-        "href": ""
+        "img": "b2.jpg",
+        "title": "投行实习内推 | 华泰证券投行实习招聘",
+        "href": "https://mp.weixin.qq.com/s/IFA15L2YLXfrD9l2jBZ5ig"
       },
       {
-        "img": "",
-        "title": "",
-        "href": ""
+        "img": "b3.jpg",
+        "title": "行研实地实习内推 | 国泰君安行研部实习生招聘",
+        "href": "https://mp.weixin.qq.com/s/ERugu3HqaxBlb-yASh00sA"
       },
       {
-        "img": "",
-        "title": "",
-        "href": ""
+        "img": "b4.jpg",
+        "title": "日常实习 | 申万宏源、华泰联合证券、盈渊资本、海通证券等",
+        "href": "https://mp.weixin.qq.com/s/ERugu3HqaxBlb-yASh00sA"
       },
       {
-        "img": "",
-        "title": "",
-        "herf": ""
+        "img": "b5.jpg",
+        "title": "券商实习内推 | 招商证券行研/投行正式实习生招聘",
+        "herf": "https://mp.weixin.qq.com/s/O2wGSfP2JoB-ieqZ-_oAgw"
       },
     ]
   },
@@ -60,29 +60,29 @@ const major = {
     "user_message_1": "我是互联网专业的学生，我还没有找到实习该怎么办啊？",
     "passage_array": [
       {
-        "img": "",
-        "title": "",
-        "href": ""
+        "img": "i1.jpg",
+        "title": "字节跳动实习内推 | 字节跳动商业化战略分析实习生招聘",
+        "href": "https://mp.weixin.qq.com/s/4pDPS-mhhuJAN0QMzMHvjA"
       },
       {
-        "img": "",
-        "title": "",
-        "href": ""
+        "img": "i2.jpg",
+        "title": "互联网实习内推 | 百度产品正式实习生招聘",
+        "href": "https://mp.weixin.qq.com/s/pOtxVnMvHKISPsBHo1w5qQ"
       },
       {
-        "img": "",
-        "title": "",
-        "href": ""
+        "img": "i3.jpg",
+        "title": "战略实习内推 | 小红书战略分析实习生招聘",
+        "href": "https://mp.weixin.qq.com/s/bPBiThWEFgftVvs-o2BQtw"
       },
       {
-        "img": "",
-        "title": "",
-        "href": ""
+        "img": "i4.jpg",
+        "title": "互联网内推｜腾讯+美团+微软+阿里巴巴 实习生热招中, 尽快投递!",
+        "href": "https://mp.weixin.qq.com/s/HNHjnlcWVBwOn8oyeEtHTQ"
       },
       {
-        "img": "",
-        "title": "",
-        "href": ""
+        "img": "i5.jpg",
+        "title": "互联网内推｜腾讯+快手+京东+爱奇艺实习生热招中,尽快投递!",
+        "href": "https://mp.weixin.qq.com/s/0p3xyOWyK6b81_Ie60J_wg"
       },
     ]
   }

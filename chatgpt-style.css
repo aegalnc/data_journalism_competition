@@ -273,8 +273,14 @@ body {
     margin: 10px;
 }
 .passage_title {
-    margin-right: 30px;
+    width: 70%;
+    margin: 10px 10px 10px 0px;
     color: #ededf0;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+.passage_title:hover {
+    text-decoration: underline;
 }
 
 .passage:hover {
@@ -288,7 +294,7 @@ body {
     display: inline-block;
 }
 .title {
-    color: #CDCCD0;
+    color: #ebeaed;
     font-size: large;
     white-space: nowrap;
     font-family: 'Zhimingxing', sans-serif;
