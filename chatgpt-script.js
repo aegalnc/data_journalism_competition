@@ -413,7 +413,7 @@ $(document).ready(function() {
   $(window).scroll(function() {
     $(".pure_student").each(function(index, element) {
       var rect = element.getBoundingClientRect();
-      if (rect.top >= 0 && rect.top <= window.innerHeight) {
+      if (rect.top >= -window.innerHeight / 2 && rect.top <= window.innerHeight / 2) {
         $(element).addClass("pure_student_animation");
       } else {
         $(element).removeClass("pure_student_animation");
@@ -725,6 +725,23 @@ fix($("#title_one")[0], $("#para_1")[0]);
 fix($("#title_two")[0], $("#para_2")[0]);
 fix($(".intermediary_fix_wrap")[0], $(".wechat_container")[0])
 
+function fix_plus(ele, condition) {
+  $(window).scroll(function() {
+    var ele_client_top = $(ele).get(0).getBoundingClientRect().top;
+    console.log(ele_client_top);
+    if (condition) {
+      $(ele).children().eq(0).removeClass("fix _plus");
+    } else if (ele_client_top <= 0) {
+      $(ele).children().eq(0).addClass("fix_plus");
+    } else {
+      $(ele).children().eq(0).removeClass("fix_plus");
+    }
+  });
+}
+
+fix_plus($(".unsuccessful_title_wrap")[0], false);
+
+
 // 元素出viewport逐渐变浅
 function fade_out(ele) {
     window.addEventListener("scroll", () => {
@@ -749,6 +766,8 @@ $(".cases_paraghraph").each(function(index, element) {
   fade_out(element);
   fade_in(element);
 });
+
+
  
 // 始终保持滚轮在最底端
 const chatMessages = $(".chat-messages")[0];
