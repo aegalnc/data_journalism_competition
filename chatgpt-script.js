@@ -11,14 +11,15 @@ const send_button = document.getElementsByClassName("send-button")[0];
 const chat_container = document.getElementsByClassName("chat-container")[0];
 
 // 为message_array赋值
-const chatgpt_message_3 = "你好，实习是提升你就业竞争力的一个很重要的手段，我建议你尽快找一些实习".split('');
-const user_message_3 = "我想问问，我身边的同学都已经手握几段实习经历了，加上现在就业形势如此严峻，我还没有实习过？".split('');
+const chatgpt_message_2 = "境外留学形势仍然相当严峻。由于国内高校毕业生逐年增加，就业形势十分困难，不少毕业生为了暂避就业压力，纷纷选择升学读研读博。2015年，我国研究生考试报名人数有177万人，而2022年我国研考人数已高达457万人，境外留学成为另一种选择，分担国内升学压力。\n根据中国教育在线发布的《2022年中国学生出国留学趋势调查报告》显示，2019年我国出国留学人员总数为70.35万人，从2000年的3.9万人到2019年的70.35万人，增长了接近18倍。出国留学深造同样竞争激烈，留学申请中绩点、语言成绩、实习经历、科研经历等等都占据了相当大的比重。";
+const user_message_3 = "那我该怎么找实习？";
 const user_message_4 = "但是我没有实习经历，想进大厂的话不是要实习背景吗？";
-const chatgpt_message_2 = "我这边建议你采取“”。";
+
+const chatgpt_message_3 = "我这边建议你采取“”。";
 const title = "付费实习";
 const user_message_1 = "hi";
-const chatgpt_message_1 = "hi";
-const user_message_2 = "hi";
+const chatgpt_message_1 = "你的情况符合大多数人。根据智联招聘发布的《2022 大学生就业力调研报告》显示，2022年我国高校毕业生首次突破 1000 万大关，刷新历史记录。其中，有74%的毕业生有在校实习经历，高于2021 年的 57.9%。我国高校毕业生躺平大军逐渐减少，面对严峻的经济形势，大学生正在逐步走出舒适圈，走入“内卷”。\n“求职难”已经是在校生必须正视的事实，无论是企业的“应届生要求两年工作经验”，还是学校的“毕业需提交两份实习资料”，早早实习已然成为大学生提高就业竞争力的重要规划。根据DT财经联合牛客撰写的《2022实习态度调查报告》显示，有10.6%的本科生在大一时开始第一段实习，在大二的有32.8%，而在大三有41.1%，在大四有15.4%，你现在开始实习并不晚。";
+const user_message_2 = "那如果我想留学深造呢？";
 const user_message_5 = "那我要从哪里得知这些付费信息？"
 const chatgpt_message_5 = "你可以寻找一些求职公众号，例如下面的..."
 
@@ -27,7 +28,7 @@ const chatgpt_message_5 = "你可以寻找一些求职公众号，例如下面�
 // 选择专业
 const major = {
   "business": {
-    "user_message_1": "我是商科专业的学生，我还没有找到实习该怎么办啊？",
+    "user_message_1": "我是二本商科专业的大三学生，身边很多同学都有好几份实习了，但是我一份也没有，投简历也没回信，我该怎么办",
     "passage_array": [
       {
         "img": "b1.jpg",
@@ -57,7 +58,7 @@ const major = {
     ]
   },
   "internet": {
-    "user_message_1": "我是互联网专业的学生，我还没有找到实习该怎么办啊？",
+    "user_message_1": "我是二本互联网专业的大三学生，身边很多同学都有好几份实习了，但是我一份也没有，投简历也没回信，我该怎么办",
     "passage_array": [
       {
         "img": "i1.jpg",
@@ -110,7 +111,7 @@ function render_message(message_p, message) {
         if (i < message.length) {
           message_p.innerHTML += message[i];
           i++;
-          if (message === chatgpt_message_2 && (message.length - i) === 2) {
+          if (message === chatgpt_message_3 && (message.length - i) === 2) {
             const span_wrap = document.createElement("div");
             message_p.appendChild(span_wrap);
             span_wrap.classList.add("title_wrap");
@@ -132,6 +133,11 @@ function render_message(message_p, message) {
             const top_offset = span.getClientRects()[0].top - chat_container.getClientRects()[0].top;
             span.setAttribute("style", "position: absolute; left: " + left_offset + "px; top: " + top_offset + "px")
             console.log(a_left, a_top, left_offset, top_offset);
+          }
+
+          if ($(".chat-messages")[0].scrollHeight - $(".chat-messages")[0].scrollTop - $(".chat-messages")[0].clientHeight > 1) {
+            $(".chat-messages")[0].scrollTop = $(".chat-messages")[0].scrollHeight - $(".chat-messages")[0].clientHeight;
+            console.log("ok")
           }
         } else {
           clearInterval(render_message_interval);
@@ -211,6 +217,9 @@ send_button.addEventListener("animationend", () => {
   .then(() => input_message(user_message_2))
   .then(() => submit_input_message(user_message_2))
   .then(() => chatgpt_reply(chatgpt_message_2))
+  .then(() => input_message(user_message_3))
+  .then(() => submit_input_message(user_message_3))
+  .then(() => chatgpt_reply(chatgpt_message_3))
   .then(() => {
     setTimeout(() => {
       const span = document.getElementsByClassName("title")[0];
@@ -741,7 +750,9 @@ $(".cases_paraghraph").each(function(index, element) {
   fade_in(element);
 });
  
-
+// 始终保持滚轮在最底端
+const chatMessages = $(".chat-messages")[0];
+console.log( 'scroll' + chatMessages.scrollHeight);
 
 
 
