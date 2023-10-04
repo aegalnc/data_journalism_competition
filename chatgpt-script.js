@@ -728,7 +728,6 @@ fix($(".intermediary_fix_wrap")[0], $(".wechat_container")[0])
 function fix_plus(ele, condition) {
   $(window).scroll(function() {
     var ele_client_top = $(ele).get(0).getBoundingClientRect().top;
-    console.log(ele_client_top);
     if (condition) {
       $(ele).children().eq(0).removeClass("fix _plus");
     } else if (ele_client_top <= 0) {
@@ -772,6 +771,25 @@ $(".cases_paraghraph").each(function(index, element) {
 // 始终保持滚轮在最底端
 const chatMessages = $(".chat-messages")[0];
 console.log( 'scroll' + chatMessages.scrollHeight);
+
+// 小人变小
+$(document).ready(function() {
+  // 使用 jQuery 选择器选择要监视的元素
+  $('#death').waypoint(function() {
+      console.log("keke");
+      $(this.element).addClass("death");   
+
+  }, {
+      offset: '-20%'
+  });
+  $('#blog').waypoint(function() {
+    $(".heavy").css("display", "block");
+    $(".heavy").addClass("drop");
+
+}, {
+    offset: window.innerHeight * 1
+});
+});
 
 
 
