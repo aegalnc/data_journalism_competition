@@ -1097,19 +1097,32 @@ body {
     line-height: 300px;
     text-shadow: 0 2px 0 rgba(255, 255, 255, 0.3);
 }
+.connection_container {
+    background-color: #222224;
+    z-index: 50;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
 
 .connection {
-    width: 70%;
+    width: 60%;
     color: #b7b7c4;
     font-size: larger;
     margin: 10px 0 10px 0;
     transform: translate(0, 100px);
     position: absolute;
     top: 450px;
+    left: 100px;
     opacity: 0;
     /* display: none; */
 }
-.connection_container {
-    z-index: 50;
-}
 
+
+
+.connection_container img {
+    position: absolute;
+    top: 400px;
+    left: 900px;
+    opacity: 0;
+}

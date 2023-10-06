@@ -809,14 +809,14 @@ $(document).ready(function() {
 // $(".connection").fadeIn(1000);
 
 
-const connection_array = [-13, 39, 130, 207, 252, 322, 423];
+const connection_array = [-13, 39, 130, 207, 100, 252, 322, 423];
 const connection_fade_in = setInterval(connection_fade_in_callback, 2000);
 var i = 0;
 function connection_fade_in_callback() {
   
-  if (i < 7) {
+  if (i < 8) {
     
-    $(".connection").eq(i).animate({
+    $(".con").eq(i).animate({
       top: connection_array[i] ,
       opacity: 1,// 为了演示目的，添加了一个 opacity 动画
     }, 1000, function() {
