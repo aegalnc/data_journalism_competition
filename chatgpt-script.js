@@ -10,78 +10,79 @@ const cursor = document.getElementById("cursor");
 const send_button = document.getElementsByClassName("send-button")[0];
 const chat_container = document.getElementsByClassName("chat-container")[0];
 
-// 为message_array赋值
-const chatgpt_message_2 = "境外留学形势仍然相当严峻。由于国内高校毕业生逐年增加，就业形势十分困难，不少毕业生为了暂避就业压力，纷纷选择升学读研读博。2015年，我国研究生考试报名人数有177万人，而2022年我国研考人数已高达457万人，境外留学成为另一种选择，分担国内升学压力。\n根据中国教育在线发布的《2022年中国学生出国留学趋势调查报告》显示，2019年我国出国留学人员总数为70.35万人，从2000年的3.9万人到2019年的70.35万人，增长了接近18倍。出国留学深造同样竞争激烈，留学申请中绩点、语言成绩、实习经历、科研经历等等都占据了相当大的比重。";
-const user_message_3 = "那我该怎么找实习？";
-const user_message_4 = "但是我没有实习经历，想进大厂的话不是要实习背景吗？";
+// 为message赋值
 
-const chatgpt_message_3 = "我这边建议你采取“”。";
 const title = "付费实习";
-const user_message_1 = "hi";
-const chatgpt_message_1 = "你的情况符合大多数人。根据智联招聘发布的《2022 大学生就业力调研报告》显示，2022年我国高校毕业生首次突破 1000 万大关，刷新历史记录。其中，有74%的毕业生有在校实习经历，高于2021 年的 57.9%。我国高校毕业生躺平大军逐渐减少，面对严峻的经济形势，大学生正在逐步走出舒适圈，走入“内卷”。\n“求职难”已经是在校生必须正视的事实，无论是企业的“应届生要求两年工作经验”，还是学校的“毕业需提交两份实习资料”，早早实习已然成为大学生提高就业竞争力的重要规划。根据DT财经联合牛客撰写的《2022实习态度调查报告》显示，有10.6%的本科生在大一时开始第一段实习，在大二的有32.8%，而在大三有41.1%，在大四有15.4%，你现在开始实习并不晚。";
-const user_message_2 = "那如果我想留学深造呢？";
-const user_message_5 = "那我要从哪里得知这些付费信息？"
-const chatgpt_message_5 = "你可以寻找一些求职公众号，例如下面的..."
+const user_message_1 = "那如果我想留学深造呢？";
+const user_message_2 = "那我该怎么找实习？";
+const user_message_3 = "那我要从哪里得知这些付费信息？"
+
+const chatgpt_message_1 = "你的情况符合大多数人。根据智联招聘发布的《2022 大学生就业力调研报告》显示，2022年我国高校毕业生首次突破 1000 万大关，刷新历史记录。其中，有74%的毕业生有在校实习经历，高于2021 年的 57.9%。我国高校毕业生躺平大军逐渐减少，面对严峻的经济形势，大学生正在逐步走出舒适圈，走入“内卷”。";
+const chatgpt_message_2 = "“求职难”已经是在校生必须正视的事实，无论是企业的“应届生要求两年工作经验”，还是学校的“毕业需提交两份实习资料”，早早实习已然成为大学生提高就业竞争力的重要规划。根据DT财经联合牛客撰写的《2022实习态度调查报告》显示，有10.6%的本科生在大一时开始第一段实习，在大二的有32.8%，而在大三有41.1%，在大四有15.4%，你现在开始实习并不晚。"
+const chatgpt_message_3 = "境外留学形势仍然相当严峻。由于国内高校毕业生逐年增加，就业形势十分困难，不少毕业生为了暂避就业压力，纷纷选择升学读研读博。2015年，我国研究生考试报名人数有177万人，而2022年我国研考人数已高达457万人，境外留学成为另一种选择，分担国内升学压力";
+const chatgpt_message_4 = "根据中国教育在线发布的《2022年中国学生出国留学趋势调查报告》显示，2019年我国出国留学人员总数为70.35万人，从2000年的3.9万人到2019年的70.35万人，增长了接近18倍。出国留学深造同样竞争激烈，留学申请中绩点、语言成绩、实习经历、科研经历等等都占据了相当大的比重。";
+const chatgpt_message_5 = "我这边建议你选择“”。";
+const chatgpt_message_6 = "你可以寻找一些求职公众号，例如下面的...";
 
 
 
 // 选择专业
 const major = {
   "business": {
-    "user_message_1": "我是二本商科专业的大三学生，身边很多同学都有好几份实习了，但是我一份也没有，投简历也没回信，我该怎么办",
-    "passage_array": [
+    "user_message": "我是二本商科专业的大三学生，身边很多同学都有好几份实习了，但是我一份也没有，投简历也没回信，我该怎么办",
+    "passages_info": [
       {
-        "img": "b1.jpg",
+        "img": "image/b1.jpg",
         "title": "中金实习内推 | 中金行研实习生招聘",
         "href": "https://mp.weixin.qq.com/s/_YVV05yEWSq3ZGwoG-5FUw"
       },
       {
-        "img": "b2.jpg",
+        "img": "image/b2.jpg",
         "title": "投行实习内推 | 华泰证券投行实习招聘",
         "href": "https://mp.weixin.qq.com/s/IFA15L2YLXfrD9l2jBZ5ig"
       },
       {
-        "img": "b3.jpg",
+        "img": "image/b3.jpg",
         "title": "行研实地实习内推 | 国泰君安行研部实习生招聘",
         "href": "https://mp.weixin.qq.com/s/ERugu3HqaxBlb-yASh00sA"
       },
       {
-        "img": "b4.jpg",
+        "img": "image/b4.jpg",
         "title": "日常实习 | 申万宏源、华泰联合证券、盈渊资本、海通证券等",
         "href": "https://mp.weixin.qq.com/s/ERugu3HqaxBlb-yASh00sA"
       },
       {
-        "img": "b5.jpg",
+        "img": "image/b5.jpg",
         "title": "券商实习内推 | 招商证券行研/投行正式实习生招聘",
         "herf": "https://mp.weixin.qq.com/s/O2wGSfP2JoB-ieqZ-_oAgw"
       },
     ]
   },
   "internet": {
-    "user_message_1": "我是二本互联网专业的大三学生，身边很多同学都有好几份实习了，但是我一份也没有，投简历也没回信，我该怎么办",
-    "passage_array": [
+    "user_message": "我是二本互联网专业的大三学生，身边很多同学都有好几份实习了，但是我一份也没有，投简历也没回信，我该怎么办",
+    "passages_info": [
       {
-        "img": "i1.jpg",
+        "img": "image/i1.jpg",
         "title": "字节跳动实习内推 | 字节跳动商业化战略分析实习生招聘",
         "href": "https://mp.weixin.qq.com/s/4pDPS-mhhuJAN0QMzMHvjA"
       },
       {
-        "img": "i2.jpg",
+        "img": "image/i2.jpg",
         "title": "互联网实习内推 | 百度产品正式实习生招聘",
         "href": "https://mp.weixin.qq.com/s/pOtxVnMvHKISPsBHo1w5qQ"
       },
       {
-        "img": "i3.jpg",
+        "img": "image/i3.jpg",
         "title": "战略实习内推 | 小红书战略分析实习生招聘",
         "href": "https://mp.weixin.qq.com/s/bPBiThWEFgftVvs-o2BQtw"
       },
       {
-        "img": "i4.jpg",
+        "img": "image/i4.jpg",
         "title": "互联网内推｜腾讯+美团+微软+阿里巴巴 实习生热招中, 尽快投递!",
         "href": "https://mp.weixin.qq.com/s/HNHjnlcWVBwOn8oyeEtHTQ"
       },
       {
-        "img": "i5.jpg",
+        "img": "image/i5.jpg",
         "title": "互联网内推｜腾讯+快手+京东+爱奇艺实习生热招中,尽快投递!",
         "href": "https://mp.weixin.qq.com/s/0p3xyOWyK6b81_Ie60J_wg"
       },
@@ -111,7 +112,7 @@ function render_message(message_p, message) {
         if (i < message.length) {
           message_p.innerHTML += message[i];
           i++;
-          if (message === chatgpt_message_3 && (message.length - i) === 2) {
+          if (message === chatgpt_message_5 && (message.length - i) === 2) {
             const span_wrap = document.createElement("div");
             message_p.appendChild(span_wrap);
             span_wrap.classList.add("title_wrap");
@@ -164,7 +165,7 @@ function render_message(message_p, message) {
     const chatgpt_avator = document.createElement('img');
     chatgpt_message_container.appendChild(chatgpt_avator);
     chatgpt_avator.classList.add('chatgpt-avatar');
-    chatgpt_avator.src = "chatgpt.png";
+    chatgpt_avator.src = "image/chatgpt.png";
 
     const chatgpt_message_p = document.createElement('p');
     chatgpt_message_container.appendChild(chatgpt_message_p);
@@ -186,7 +187,7 @@ function render_message(message_p, message) {
     const user_avator = document.createElement('img');
     user_message_container.appendChild(user_avator);
     user_avator.classList.add('user-avatar');
-    user_avator.src = "user-avatar.png";
+    user_avator.src = "image/user-avatar.png";
 
     const user_message_p = document.createElement('p');
     user_message_container.appendChild(user_message_p);
@@ -205,21 +206,23 @@ function render_message(message_p, message) {
 
 // 鼠标移动的回调函数
 cursor.addEventListener("animationend", () => {
-  input_message(major[str_major].user_message_1)
+  input_message(major[str_major].user_message)
   .then(() => 
     send_button.classList.add("flash")
   )
 })
 // submit第一条信息
 send_button.addEventListener("animationend", () => {
-  submit_input_message(major[str_major].user_message_1)
+  submit_input_message(major[str_major].user_message)
   .then(() => chatgpt_reply(chatgpt_message_1))
+  .then(() => chatgpt_reply(chatgpt_message_2))
+  .then(() => input_message(user_message_1))
+  .then(() => submit_input_message(user_message_1))
+  .then(() => chatgpt_reply(chatgpt_message_3))
+  .then(() => chatgpt_reply(chatgpt_message_4))
   .then(() => input_message(user_message_2))
   .then(() => submit_input_message(user_message_2))
-  .then(() => chatgpt_reply(chatgpt_message_2))
-  .then(() => input_message(user_message_3))
-  .then(() => submit_input_message(user_message_3))
-  .then(() => chatgpt_reply(chatgpt_message_3))
+  .then(() => chatgpt_reply(chatgpt_message_5))
   .then(() => {
     setTimeout(() => {
       const span = document.getElementsByClassName("title")[0];
@@ -237,34 +240,43 @@ $(".prompt").eq(0).click(() => {
   $(".user-message-container").remove();
   $(".chatgpt-message-container").remove();
   $(".prompt").eq(0).css("display", "none");
-  input_message(user_message_5)
-  .then(() => submit_input_message(user_message_5))
-  .then(() => chatgpt_reply(chatgpt_message_5))
+  input_message(user_message_3)
+  .then(() => submit_input_message(user_message_3))
+  .then(() => chatgpt_reply(chatgpt_message_6))
   .then(() => {
-      const passages_wrap = document.createElement('div');
-      passages_wrap.classList.add("passages_wrap");
-      const chatgpt_message_container = document.getElementsByClassName("chatgpt-message-container")[0];
-      chatgpt_message_container.appendChild(passages_wrap);
-      const passages = document.createElement('div');
-      passages.classList.add("passages");
-      passages_wrap.appendChild(passages)
-      for (let i = 0; i < 5; i++) {
-        const passage = document.createElement('div');
-        passage.classList.add("passage");
-        passages.appendChild(passage);
-        const passage_image = document.createElement('img');
-        passage_image.classList.add("passage_image");
-        passage.appendChild(passage_image);
-        passage_image.src = major[str_major].passage_array[i].img;
-        const passage_title = document.createElement('a');
-        passage_title.classList.add("passage_title");
-        passage.appendChild(passage_title);
-        passage_title.innerHTML = major[str_major].passage_array[i].title;
-        passage_title.href = major[str_major].passage_array[i].href
-      }
+
+    // 添加推文
+    const passages_wrap = document.createElement('div');
+    passages_wrap.classList.add("passages_wrap");
+    const chatgpt_message_container = document.getElementsByClassName("chatgpt-message-container")[0];
+    chatgpt_message_container.appendChild(passages_wrap);
+    const passages = document.createElement('div');
+    passages.classList.add("passages");
+    passages_wrap.appendChild(passages)
+    for (let i = 0; i < 5; i++) {
+      const passage = document.createElement('div');
+      passage.classList.add("passage");
+      passages.appendChild(passage);
+      const passage_image = document.createElement('img');
+      passage_image.classList.add("passage_image");
+      passage.appendChild(passage_image);
+      passage_image.src = major[str_major].passages_info[i].img;
+      const passage_title = document.createElement('a');
+      passage_title.classList.add("passage_title");
+      passage.appendChild(passage_title);
+      passage_title.innerHTML = major[str_major].passages_info[i].title;
+      passage_title.href = major[str_major].passages_info[i].href
+    }
+    //添加下滑按钮
+    $(".prompt").eq(1).css("display", "block");
   })
 })
 
+$(".prompt").eq(1).click(() => {
+  $('html, body').animate({
+    scrollTop: $(".map").eq(0).offset().top,
+  }, 'slow')
+});
 // hover弹出推文卡片
 /*$(".passage").each(function() {
   $(this).mouseover(function() {
@@ -704,7 +716,7 @@ check_qr();
 // 扫码成功换照片
 function change_photos() {
   $(".phone").on("animationend", function() {
-    $(".phone").attr("src", "success.PNG");
+    $(".phone").attr("src", "image/success.PNG");
   })
 }
 change_photos();
@@ -784,12 +796,39 @@ $(document).ready(function() {
   });
   $('#blog').waypoint(function() {
     $(".heavy").css("display", "block");
-    $(".heavy").addClass("drop");
+    $(".heavy").on("animationend", () => {
+      $(".signboard").animate({ top: 5000 }, 'slow');
+      $(".signboard").css("display", "block")
+    });
 
 }, {
     offset: window.innerHeight * 1
 });
 });
+
+// $(".connection").fadeIn(1000);
+
+
+const connection_array = [-13, 39, 130, 207, 252, 322, 423];
+const connection_fade_in = setInterval(connection_fade_in_callback, 2000);
+var i = 0;
+function connection_fade_in_callback() {
+  
+  if (i < 7) {
+    
+    $(".connection").eq(i).animate({
+      top: connection_array[i] ,
+      opacity: 1,// 为了演示目的，添加了一个 opacity 动画
+    }, 1000, function() {
+      // 动画完成后的回调函数
+     console.log("h") // 设置最终位置
+    });
+    i ++;
+  } else {
+    clearInterval(connection_fade_in);
+  }
+}
+
 
 
 

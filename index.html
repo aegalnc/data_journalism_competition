@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="chatgpt-style.css">
     <script src="code.jquery.com_jquery-3.7.1.min.js"></script>
     <script src="jquery.waypoints.min.js"></script>
+    <script src="anime.min.js"></script>
     <script src="cdn.jsdelivr.net_npm_echarts@5.4.3_dist_echarts.js"></script>
 
 </head>
@@ -23,9 +24,9 @@
         <div class="blur_wrap blur fix">
 
             <nav id="hamnav">
-                <img src="icon_1.png" alt="" class="icons" id="icon_1">
-                <img src="icon_2.png" alt="" class="icons" id="icon_2">
-                <img src="icon_3.png" alt="" class="icons" id="icon_3">
+                <img src="image/icon_1.png" alt="" class="icons" id="icon_1">
+                <img src="image/icon_2.png" alt="" class="icons" id="icon_2">
+                <img src="image/icon_3.png" alt="" class="icons" id="icon_3">
             </nav>
 
 
@@ -41,9 +42,9 @@
                 <div class="chat-input">
                     <p class="input-message">send a message...</p>
                     <button class="send-button">
-                        <img src="send-button.png" alt="">
+                        <img src="image/send-button.png" alt="">
                     </button>
-                    <img src="cursor.png" alt="" id="cursor">
+                    <img src="image/cursor.png" alt="" id="cursor">
                 </div>
 
             </div>
@@ -55,51 +56,52 @@
                 <div class="dot_2"></div>
             </div>
             <button class="scroll">
-                <img src="scroll.png" alt="">
+                <img src="image/scroll.png" alt="">
             </button> 
 
             <!-- 继续提示词 -->
             <p class="prompt" style="display: none;">点击此处继续</p>
+            <p class="prompt" style="display: none;">点击此处下滑</p>
 
         </div>
 
         
 
     </div>
-        <!-- <div class="map">  
-            <object data="3092451869.svg" id="svg-object">
-            </object>>
-            <div class="card_wrap">
-                <div class="card">
-                    <div id="area">地区名</div>
-                </div>
+    <div class="map">  
+        <object data="3092451869.svg" id="svg-object">
+        </object>>
+        <div class="card_wrap">
+            <div class="card">
+                <div id="area">地区名</div>
             </div>
-            <div class="secard" style="display: none;">
-                <p class="secard_title">资料卡</p>
-                <div class="secard_content">
-                    <div class="left">
-                        <p class="secard_item_title">所属行业</p>
-                        <p class="industry secard_item">科技推广和应用服务业</p>
-                        <p class="secard_item_title">成立日期</p>
-                        <p class="date secard_item">2014-10-22</p>
-                    </div>
-                    <div class="right">
-                        <p class="secard_item_title">法定代表人</p>
-                        <p class="representative secard_item">范永杰
-                        </p>
-                        <p class="secard_item_title">城市</p>
-                        <p class="city secard_item">北京市</p>
-                    </div>
-                </div>
-                <a href="" class="href">
-                    <p>跳转</p>
-                </a>
-                <img src="cancel.png" alt="">
-            </div>
-            
-            <p class="map_title">我是表头</p>
-             <button class="test" id="Beijing"></button>  -->
         </div>
+        <div class="secard" style="display: none;">
+            <p class="secard_title">资料卡</p>
+            <div class="secard_content">
+                <div class="left">
+                    <p class="secard_item_title">所属行业</p>
+                    <p class="industry secard_item">科技推广和应用服务业</p>
+                    <p class="secard_item_title">成立日期</p>
+                    <p class="date secard_item">2014-10-22</p>
+                </div>
+                <div class="right">
+                    <p class="secard_item_title">法定代表人</p>
+                    <p class="representative secard_item">范永杰
+                    </p>
+                    <p class="secard_item_title">城市</p>
+                    <p class="city secard_item">北京市</p>
+                </div>
+            </div>
+            <a href="" class="href">
+                <p>跳转</p>
+            </a>
+            <img src="cancel.png" alt="">
+        </div>
+        
+        <p class="map_title">我是表头</p>
+            <button class="test" id="Beijing"></button> 
+    </div>
         */
         <div id="main" style="width: 100vw;height:100vh;"></div>
         <script type="text/javascript">
@@ -107,6 +109,9 @@
 
 var chartDom = document.getElementById('main');
 var myChart = echarts.init(chartDom);
+window.addEventListener('resize', function() {
+    myChart.resize();
+});
 var option;
 
 myChart.showLoading();
@@ -238,6 +243,12 @@ $.get('100000_full.json', function (geoJson) {
 
 option && myChart.setOption(option);
         </script>
+    <div class="no_height_container">
+        <div class="cases_paraghraph">看着地图上的付费实习公司的数据与评价</div>
+        <div class="cases_paraghraph">我很心动</div>
+        <div class="cases_paraghraph">我觉得这就是我需要的东西</div>
+        <div class="cases_paraghraph">于是，我联系了客服</div>
+    </div>
     <div class="container" style="height: 200vh;">
         <div  class="intermediary_fix_wrap">
         <div class="intermediary_chat_container">
@@ -266,9 +277,9 @@ option && myChart.setOption(option);
                 </div>
                 <div class="intermediary_message_container pre_slide qr">
                     <p class="intermediary_name">我叫客服</p>
-                    <img src="qr.PNG" alt="" /img>
+                    <img src="image/qr.PNG" alt="" /img>
                 </div>
-                <img src="phone.PNG" alt="" class="phone" style="display: none;">
+                <img src="image/phone.PNG" alt="" class="phone" style="display: none;">
             </div>
         </div> 
     </div>
@@ -276,26 +287,26 @@ option && myChart.setOption(option);
     <div class="wechat_container_wrap" id="wechat_cover" >
         <div class="wechat_container">
             <div class="wechat_head">
-                <img src="return.png" alt="">
+                <img src="image/return.png" alt="">
                 <p>我也叫中介</p>
-                <img src="other.png" alt="" id="other">
+                <img src="image/other.png" alt="" id="other">
             </div>
             <div class="wechat_messages">
                 <div class="in_wemessage_container pre_slide">
-                    <img src="chatgpt.png" alt="">
+                    <img src="image/chatgpt.png" alt="">
                     <p>你好</p>
                 </div>
                 <div class="stu_wemessage_container pre_slide">
                     <p>哦哈哟</p>
-                    <img src="chatgpt.png" alt="">
+                    <img src="image/chatgpt.png" alt="">
                 </div>
                 <div class="in_wemessage_container pre_slide">
-                    <img src="chatgpt.png" alt="">
+                    <img src="image/chatgpt.png" alt="">
                     <p>中秋快乐</p>
                 </div>
                 <div class="stu_wemessage_container pre_slide">
                     <p>国庆也快乐</p>
-                    <img src="chatgpt.png" alt="">
+                    <img src="image/chatgpt.png" alt="">
                 </div>
                 
             </div>
@@ -336,20 +347,20 @@ option && myChart.setOption(option);
 
             <div class="wechat_messages">
                 <div class="in_wemessage_container pre_slide">
-                    <img src="chatgpt.png" alt="">
+                    <img src="image/chatgpt.png" alt="">
                     <p>你好</p>
                 </div>
                 <div class="stu_wemessage_container pre_slide">
                     <p>哦哈哟</p>
-                    <img src="chatgpt.png" alt="">
+                    <img src="image/chatgpt.png" alt="">
                 </div>
                 <div class="in_wemessage_container pre_slide">
-                    <img src="chatgpt.png" alt="">
+                    <img src="image/chatgpt.png" alt="">
                     <p>中秋快乐</p>
                 </div>
                 <div class="stu_wemessage_container pre_slide">
                     <p>国庆也快乐</p>
-                    <img src="chatgpt.png" alt="">
+                    <img src="image/chatgpt.png" alt="">
                 </div>
             </div>
         </div>
@@ -365,16 +376,23 @@ option && myChart.setOption(option);
     </div>
 
     <div class="reality_virture">
-        <img src="idea.PNG" alt="" id="reature_background">
-        <img src="v1.PNG" alt="" class="pure_student">
-        <img src="v2.PNG" alt="" class="pure_student">
-        <img src="v3.PNG" alt="" class="pure_student">
-        <img src="reword.PNG" alt="" class="word">
-        <img src="v4.PNG" alt="" class="pure_student">
-        <img src="v6.PNG" alt="" class="pure_student">
-        <img src="v5.PNG" alt="" class="pure_student last" id="death">
-        <img src="imword.PNG" alt="" class="word">
-        <img src="heavy.PNG" alt="" class="heavy">
+        <img src="image/idea.PNG" alt="" id="reature_background">
+        <img src="image/v1.PNG" alt="" class="pure_student">
+        <img src="image/v2.PNG" alt="" class="pure_student">
+        <img src="image/v3.PNG" alt="" class="pure_student">
+        <img src="image/reword.PNG" alt="" class="word">
+        <img src="image/v4.PNG" alt="" class="pure_student">
+        <img src="image/v6.PNG" alt="" class="pure_student">
+        <img src="image/v5.PNG" alt="" class="pure_student last" id="death">
+        <img src="image/imword.PNG" alt="" class="word">
+        <img src="image/heavy.PNG" alt="" class="heavy">
+        <div class="signboard">
+            <div class="sign">你的付费实习体验之旅已结束</div>
+            <div class="strings"></div>
+            <div class="pin top"></div>
+            <div class="pin left"></div>
+            <div class="pin right"></div>
+          </div>
     </div>
     
     <div class="container blogger_index" id="blog">
@@ -395,6 +413,16 @@ option && myChart.setOption(option);
         <p class="name">李玉为化名</p>
         </div>
         
+    </div>
+
+    <div class="container connection_container">
+        <p class="connection" >回到故事的开头，你是不是很好奇：为什么会有两个身份可以选择？</p>
+        <p class="connection">以“实习内推”为关键词，我们在微信搜索里挑选了出现频率较高的4个公众号，分别是“Hi实习”、“索沃内推”、“易达咨询”和“Finacc实习求职”</p>
+        <p class="connection">针对每个公众号，我们以2022年9月-2023年9月为时间界限筛选了它们发布的有关实习内推的文章</p>
+        <p class="connection">这些文章总共提到了481次公司名字，其中有77家公司至少上榜两次</p>
+        <p class="connection">在重复出现次数排行榜中，我们惊奇地发现：排名前十的恰恰就是商科企业和互联网企业，并且这两类企业各占5席。</p>
+        <p class="connection">换个角度看，这样的分布也能在一定程度上说明：商科专业和互联网专业的同学对“付费实习”需求最大。翻看社交媒体上讨论热度较高的内容，这样的倾向十分明显。</p>
+        <p class="connection">为了更好地理解参与“付费实习”的同学的处境，我们和几位同学简单聊了一下，接下来让我们倾听他们的声音。</p>
     </div>
      
     <script src="chatgpt-script.js"></script>
