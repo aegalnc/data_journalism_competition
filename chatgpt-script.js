@@ -438,7 +438,8 @@ $(document).ready(function() {
 
 // 地图覆盖出现卡片
 const svgObject = document.getElementById('svg-object');
-const card = document.getElementsByClassName("card")[0];
+const comment_object = document.getElementById('svg-comment_object');
+
 const card_wrap = document.getElementsByClassName("card_wrap")[0];
 const area = document.getElementById("area");
 const company = document.getElementById("company");
@@ -449,6 +450,7 @@ const representative = document.getElementsByClassName("representative")[0];
 const city = document.getElementsByClassName("city")[0];
 const test = document.getElementsByClassName("test")[0];
 const mapobj = document.getElementsByClassName("map")[0];
+const map_2_obj = document.getElementsByClassName("map")[1];
 var on_secard = false;
 var on_card = false;
 var on_p = false;
@@ -456,6 +458,36 @@ var on_ele = false;
 
 window.addEventListener("load", function() {
     const svgDocument = svgObject.contentDocument;
+    const comment_document = comment_object.contentDocument;
+    const com_provinces = Array.from(comment_document.getElementsByClassName("province"));
+    com_provinces.forEach(ele => {
+      const last_fill = ele.style.fill;
+
+      ele.addEventListener("mouseover", (event) => {
+
+        for (var key in map) {
+          if (map.hasOwnProperty(key) && typeof map[key] === 'object' && 'comment' in map[key] && map[key].comment !== '' && key === ele.id) {
+            ele.style.fill = "pink";
+            const card = this.document.createElement("div");
+            map_2_obj.appendChild(card);
+            card.classList.add("card");
+            map[key].comment.forEach((ele, index) => {
+              const comment = this.document.createElement("p");
+              card.appendChild(comment);
+              comment.classList.add("comment");
+              comment.innerHTML = ele;
+            })
+          }
+        }
+      })
+
+      ele.addEventListener("mouseleave", (event) => {
+        console.log("leave")
+        const card = this.document.getElementsByClassName("card")[0];
+        card.remove()
+        ele.style.fill = last_fill;
+      })
+    })
     console.log(svgObject);
     console.log(svgDocument);
     var provinces = Array.from(svgDocument.getElementsByClassName("province"));
@@ -471,7 +503,7 @@ window.addEventListener("load", function() {
         
         
         for (var key in map) {
-          if (map.hasOwnProperty(key) && typeof map[key] === 'object' && 'data' in map[key] && map[key].data !== '' ) {
+          if (map.hasOwnProperty(key) && typeof map[key] === 'object' && 'data' in map[key] && map[key].data !== '' && key === ele.id) {
             element.style.fill = "pink";
             const card = this.document.createElement("div");
             mapobj.appendChild(card);
@@ -527,27 +559,8 @@ window.addEventListener("load", function() {
 
     });
 
-    card_wrap.addEventListener("mouseover", () => {
-      on_card = true;
-      console.log("on_card" + on_card)
-    })
-    card_wrap.addEventListener("mouseleave", () => {
-      on_card = false;
-      console.log("on_card" + on_card)
-    })
-    window.addEventListener("mousemove", () => {
-      setTimeout(() => {
-        if (!on_ele && !on_card) {
-          card_wrap.style.display = "none";
-          const companies = Array.from(card.getElementsByClassName("company"));
-          companies.forEach((ele, index) => {
-            card.remove(ele);
-          })
-
-        }
-      }, 100)
-      
-    })
+    
+    
 });
 
   const map = {
