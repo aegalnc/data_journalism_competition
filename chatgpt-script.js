@@ -475,6 +475,10 @@ window.addEventListener("load", function() {
               const company = this.document.createElement("div");
               card.appendChild(company);
               company.classList.add("company");
+              const company_name = this.document.createElement("div");
+              company.appendChild(company_name);
+              company_name.classList.add("company_name");
+              company_name.innerHTML = ele.split(',')[0];
               const content = this.document.createElement("div");
               company.appendChild(content);
               content.classList.add("content");
@@ -484,11 +488,22 @@ window.addEventListener("load", function() {
               const industry = this.document.createElement("p");
               left.appendChild(industry);
               industry.classList.add("industry");
-              industry.innerHTML = ele.split(',')[0];
+              industry.innerHTML = ele.split(',')[5];
+              const date = this.document.createElement("p");
+              left.appendChild(date);
+              date.classList.add("date");
+              date.innerHTML = ele.split(',')[2];
               const right = this.document.createElement("div");
               content.appendChild(right);
               right.classList.add("right");
-
+              const city = this.document.createElement("p");
+              right.appendChild(city);
+              city.classList.add("city");
+              city.innerHTML = ele.split(',')[4];
+              const representative = this.document.createElement("p");
+              right.appendChild(representative);
+              representative.classList.add("representative");
+              representative.innerHTML = ele.split(',')[1];
             });
           }
         }          

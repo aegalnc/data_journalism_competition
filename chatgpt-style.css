@@ -547,10 +547,14 @@ body {
     width: 350px;
     padding: 5px 20px 0 20px;
     height: 90vh;
-    overflow-Y: scroll;
     background-color: rgba(212, 206, 206, 0.7);;
     box-shadow: 0 0 20px rgba(219, 221, 220, 0.4);
+    border-radius: 30px;
+    border: solid 2px rgba(128, 121, 139, 0.5);
     position: relative;
+    top: 60px;
+    left: 800px;
+    position: absolute;
 }
 /* @media screen and (min-width: 500px) {
     .card {
@@ -566,7 +570,7 @@ body {
     font-weight: 700;
     margin: 5px 0 5px 0;
 }
-#name {
+.company_name {
     width: 100%;
     text-align: center;
     font-size: large;
