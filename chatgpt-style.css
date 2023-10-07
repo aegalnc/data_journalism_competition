@@ -29,6 +29,17 @@ body {
     align-items: center;
     background-color: #222224;
 }
+.z_container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #222224;
+    z-index: 50;
+}
 
 .fix {
     position: fixed;
@@ -1097,4 +1108,21 @@ body {
     top: 400px;
     left: 900px;
     opacity: 0;
+}
+
+.friend {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+.friend_btn {
+    position: absolute;
+    border: red solid 1px;
+    top: 225px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 250px;
+    height: 50px;
+    background-color: transparent;
 }
