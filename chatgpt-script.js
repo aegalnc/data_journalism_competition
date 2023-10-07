@@ -448,6 +448,7 @@ const date = document.getElementsByClassName("date")[0];
 const representative = document.getElementsByClassName("representative")[0];
 const city = document.getElementsByClassName("city")[0];
 const test = document.getElementsByClassName("test")[0];
+const mapobj = document.getElementsByClassName("map")[0];
 var on_secard = false;
 var on_card = false;
 var on_p = false;
@@ -466,7 +467,9 @@ window.addEventListener("load", function() {
         var mouseX = event.clientX; // 获取鼠标相对于浏览器窗口左上角的横坐标
         var mouseY = event.clientY; // 获取鼠标相对于浏览器窗口左上角的纵坐标
         
-        card_wrap.style.display = "block";
+        const card = this.document.createElement("div");
+        mapobj.appendChild(card);
+        card.classList.add("card");
         
         for (var key in map) {
           if (element.id === key) {
@@ -510,7 +513,8 @@ window.addEventListener("load", function() {
       })
 
       element.addEventListener("mouseleave", () => {
-        card_wrap.style.display = "none";
+        const card = this.document.getElementsByClassName("card")[0];
+        card.remove()
       })
 
     });
