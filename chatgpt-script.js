@@ -438,7 +438,7 @@ $(document).ready(function() {
 
 // 地图覆盖出现卡片
 const svgObject = document.getElementById('svg-object');
-const comment_object = document.getElementById('svg-comment_object');
+const comment_object = document.getElementById('comment_object');
 
 const card_wrap = document.getElementsByClassName("card_wrap")[0];
 const area = document.getElementById("area");

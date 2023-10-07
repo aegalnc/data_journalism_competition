@@ -535,18 +535,7 @@ body {
     left: 700px;
     border: #838597 solid 1px;
 }
-.card_wrap {
-    overflow: hidden;
-    position: absolute;
-    width: 330px;
-    height: 90vh;
-    border-radius: 30px;
-    border: solid 2px rgba(128, 121, 139, 0.5);
-    box-shadow: 0 0 8px rgb(28, 28, 28);
-    animation: showup 0.3s forwards;
-    top: 60px;
-    left: 800px;
-}
+
 .card {
     width: 350px;
     padding: 5px 20px 0 20px;
@@ -610,9 +599,7 @@ body {
     position: absolute;
     top: 0;
 }
-.comment {
 
-}
 @keyframes showup {
     to {
         transform: translate(0, 0);
