@@ -463,6 +463,10 @@ window.addEventListener("load", function() {
             const card = this.document.createElement("div");
             map_2_obj.appendChild(card);
             card.classList.add("card");
+            const area = this.document.createElement("div");
+            card.appendChild(area);
+            area.classList.add("area");
+            area.innerHTML = map[key].title;
             map[key].comment.forEach((ele, index) => {
               const comment = this.document.createElement("p");
               card.appendChild(comment);
