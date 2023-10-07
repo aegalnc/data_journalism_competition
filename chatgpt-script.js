@@ -4,8 +4,8 @@ const chatgpt_message_1_p = document.getElementById("chatgpt-message-1");
 const user_message_1_p = document.getElementById("user-message-1");
 const user_message_container_1 = document.getElementById("user-message-container-1");
 const chatgpt_message_container_1 = document.getElementById("chatgpt-message-container-1");
-const input_message_p = document.getElementsByClassName("input-message")[0];
-const chat_messages = document.getElementsByClassName("chat-messages")[0];
+const input_message_p = document.getElementsByClassName("input-message");
+const chat_messages = document.getElementsByClassName("chat-messages");
 const cursor = document.getElementById("cursor");
 const send_button = document.getElementsByClassName("send-button")[0];
 const chat_container = document.getElementsByClassName("chat-container")[0];
@@ -23,6 +23,31 @@ const chatgpt_message_3 = "境外留学形势仍然相当严峻。由于国内�
 const chatgpt_message_4 = "根据中国教育在线发布的《2022年中国学生出国留学趋势调查报告》显示，2019年我国出国留学人员总数为70.35万人，从2000年的3.9万人到2019年的70.35万人，增长了接近18倍。出国留学深造同样竞争激烈，留学申请中绩点、语言成绩、实习经历、科研经历等等都占据了相当大的比重。";
 const chatgpt_message_5 = "我这边建议你选择“”。";
 const chatgpt_message_6 = "你可以寻找一些求职公众号，例如下面的...";
+
+const user_message_4 = "呜呜呜，付费实习都是骗人的，我的钱白花了！";
+const user_message_5 = "我选了爱思益这家机构！我在网上看别人说，大机构、大公司会更加靠谱一点，所以我就选择了它，他们跟我说能拿到实习证明，但最后我什么都没拿到！";
+const user_message_6 = "呜呜呜！早知道在实习之前先问一下你，凭你的算法和数据量，我一定不会踩坑的，我真的好后悔！";
+
+const chatgpt_message_7 = "付费实习的确风险重重，需要求职者小心谨慎，请问你咨询的是哪一家机构？";
+const chatgpt_message_8 = "爱思益的确是付费实习行业内规模较大的公司，但大公司不一定靠谱，还是需要实习者仔细甄别。"
+const chatgpt_message_9 = "感谢夸奖！虽然我是人工智能，但从你的言语中我能感受你的失落，鉴于此，我给你推荐几家靠谱的实习机构吧！";
+
+$("#ending").waypoint(function() {
+  console.log("end")
+  input_message(user_message_4,input_message_p[1])
+  .then(() => submit_input_message(user_message_4, chat_messages[1]))
+  .then(() => chatgpt_reply(chatgpt_message_7, chat_messages[1]))
+  .then(() => input_message(user_message_5, input_message_p[1]))
+  .then(() => submit_input_message(user_message_5, chat_messages[1]))
+  .then(() => chatgpt_reply(chatgpt_message_8, chat_messages[1]))
+  .then(() => input_message(user_message_6, input_message_p[1]))
+  .then(() => submit_input_message(user_message_6, chat_messages[1]))
+  .then(() => chatgpt_reply(chatgpt_message_9, chat_messages[1]))
+  .then(() => {
+    const span = document.getElementsByClassName("title")[1];
+    span.classList.add("magnify");})
+  this.destroy();
+})
 
 
 
@@ -128,22 +153,45 @@ function render_message(message_p, message) {
             const value = window.getComputedStyle(span).getPropertyValue("font-size");
             span_wrap.setAttribute("style", "width: " + (parseFloat(value.slice(0, -2)) * 4) + "px; height: " + parseFloat(value.slice(0, -2)) + "px");
 
-            const a_left = span.getBoundingClientRect().left - chat_container.getBoundingClientRect().left;
-            const a_top = span.getBoundingClientRect().top - chat_container.getBoundingClientRect().top;
             const left_offset = span.getClientRects()[0].left - chat_container.getClientRects()[0].left;
             const top_offset = span.getClientRects()[0].top - chat_container.getClientRects()[0].top;
             span.setAttribute("style", "position: absolute; left: " + left_offset + "px; top: " + top_offset + "px")
-            console.log(a_left, a_top, left_offset, top_offset);
+          }
+          const haha = "（哈哈哈，水鱼终于上钩了！！！）";
+          if (message === chatgpt_message_9 && (message.length - i) === 1) {
+            const span_wrap = document.createElement("div");
+            message_p.appendChild(span_wrap);
+            span_wrap.classList.add("title_wrap");
+
+            const span = document.createElement("span");
+            span_wrap.appendChild(span);
+            span.classList.add("title");
+
+            for (let j = 0; j < haha.length; j++) {
+              span.innerHTML += haha[j];
+            }
+
+            const value = window.getComputedStyle(span).getPropertyValue("font-size");
+            span_wrap.setAttribute("style", "width: " + (parseFloat(value.slice(0, -2)) * 16) + "px; height: " + parseFloat(value.slice(0, -2)) + "px");
+
+            const left_offset = span.getClientRects()[0].left - chat_container.getClientRects()[0].left;
+            const top_offset = span.getClientRects()[0].top - chat_container.getClientRects()[0].top;
+            span.setAttribute("style", "position: absolute; left: " + left_offset + "px; top: " + top_offset + "px")
           }
 
           if ($(".chat-messages")[0].scrollHeight - $(".chat-messages")[0].scrollTop - $(".chat-messages")[0].clientHeight > 1) {
             $(".chat-messages")[0].scrollTop = $(".chat-messages")[0].scrollHeight - $(".chat-messages")[0].clientHeight;
             console.log("ok")
           }
+          if ($(".chat-messages")[1].scrollHeight - $(".chat-messages")[1].scrollTop - $(".chat-messages")[0].clientHeight > 1) {
+            $(".chat-messages")[1].scrollTop = $(".chat-messages")[1].scrollHeight - $(".chat-messages")[1].clientHeight;
+            console.log("ok")
+          }
         } else {
           clearInterval(render_message_interval);
           resolve();
         }
+        
       }
     
       const render_message_interval = setInterval(interval_callback, 100); 
@@ -151,13 +199,13 @@ function render_message(message_p, message) {
   }
 
   // 用户输入
-  function input_message(user_message) {
-    $(".input-message").html('');
+  function input_message(user_message, input_message_p) {
+    $(input_message_p).html('');
     return render_message(input_message_p, user_message);
   }
   
   // chatgpt回复
-  function chatgpt_reply(chatgpt_message) {
+  function chatgpt_reply(chatgpt_message, chat_messages) {
     const chatgpt_message_container = document.createElement('div');
     chat_messages.appendChild(chatgpt_message_container);
     chatgpt_message_container.classList.add('chatgpt-message-container');
@@ -176,7 +224,7 @@ function render_message(message_p, message) {
   }
 
   // 提交input_message
-  function submit_input_message(user_message) {
+  function submit_input_message(user_message, chat_messages) {
     // 清空input_message
     $(".input-message").html('');
     // 添加user-message
@@ -206,23 +254,23 @@ function render_message(message_p, message) {
 
 // 鼠标移动的回调函数
 cursor.addEventListener("animationend", () => {
-  input_message(major[str_major].user_message)
+  input_message(major[str_major].user_message, input_message_p[0])
   .then(() => 
     send_button.classList.add("flash")
   )
 })
 // submit第一条信息
 send_button.addEventListener("animationend", () => {
-  submit_input_message(major[str_major].user_message)
-  .then(() => chatgpt_reply(chatgpt_message_1))
-  .then(() => chatgpt_reply(chatgpt_message_2))
-  .then(() => input_message(user_message_1))
-  .then(() => submit_input_message(user_message_1))
-  .then(() => chatgpt_reply(chatgpt_message_3))
-  .then(() => chatgpt_reply(chatgpt_message_4))
-  .then(() => input_message(user_message_2))
-  .then(() => submit_input_message(user_message_2))
-  .then(() => chatgpt_reply(chatgpt_message_5))
+  submit_input_message(major[str_major].user_message, chat_messages[0])
+  .then(() => chatgpt_reply(chatgpt_message_1, chat_messages[0]))
+  .then(() => chatgpt_reply(chatgpt_message_2, chat_messages[0]))
+  .then(() => input_message(user_message_1, input_message_p[0]))
+  .then(() => submit_input_message(user_message_1, chat_messages[0]))
+  .then(() => chatgpt_reply(chatgpt_message_3, chat_messages[0]))
+  .then(() => chatgpt_reply(chatgpt_message_4, chat_messages[0]))
+  .then(() => input_message(user_message_2, input_message_p[0]))
+  .then(() => submit_input_message(user_message_2, chat_messages[0]))
+  .then(() => chatgpt_reply(chatgpt_message_5, chat_messages[0]))
   .then(() => {
     setTimeout(() => {
       const span = document.getElementsByClassName("title")[0];
@@ -240,9 +288,9 @@ $(".prompt").eq(0).click(() => {
   $(".user-message-container").remove();
   $(".chatgpt-message-container").remove();
   $(".prompt").eq(0).css("display", "none");
-  input_message(user_message_3)
-  .then(() => submit_input_message(user_message_3))
-  .then(() => chatgpt_reply(chatgpt_message_6))
+  input_message(user_message_3, input_message_p[0])
+  .then(() => submit_input_message(user_message_3, chat_messages[0]))
+  .then(() => chatgpt_reply(chatgpt_message_6, chat_messages[0]))
   .then(() => {
 
     // 添加推文
@@ -843,7 +891,6 @@ console.log( 'scroll' + chatMessages.scrollHeight);
 $(document).ready(function() {
   // 使用 jQuery 选择器选择要监视的元素
   $('#death').waypoint(function() {
-      console.log("keke");
       $(this.element).addClass("death");   
 
   }, {
@@ -861,9 +908,8 @@ $(document).ready(function() {
 });
 });
 
-// $(".connection").fadeIn(1000);
 
-
+// 
 const connection_array = [-13, 39, 130, 207, 100, 252, 322, 423];
 const connection_fade_in = setInterval(connection_fade_in_callback, 2000);
 var i = 0;
@@ -884,6 +930,7 @@ function connection_fade_in_callback() {
   }
 }
 
+// 换地图
 $(".test").click(() => {
   if ($(".obj").attr("id") === "company_object") {
     $(".obj").attr("data", "comment.svg"); // 设置data属性
@@ -895,10 +942,32 @@ $(".test").click(() => {
   
 });
 
-const Bei = document.getElementById("Beijing");
-Bei.addEventListener("click", () => {
-  console.log("click9");
+// 总结部分揭示黑暗付费动画
+$(".friend_btn").click(() => {
+  $(".friend_btn").css("display", "none");
+  $(".friend").animate({
+    left: 200,
+  }, 'slow', () => {
+    console.log("hi");
+    $(".people").css("display", "block");
+    $(".people").animate({
+      top: 20,
+    }, 'slow', () => {
+      $(".ad").animate({
+        opacity: 1
+      }, 'slow', () => {
+        $(".adp").animate({
+          opacity: 1
+        }, 'slow', () => {
+          $(".people").eq(1).animate({
+            top: 540
+          }, 'slow', () => {
+            $(".money").animate({
+              opacity: 1
+            }, 'slow');
+          })
+        })
+      })
+    });
+  })
 })
-
-
-
