@@ -494,7 +494,7 @@ window.addEventListener("load", function() {
 
       const last_fill = element.style.fill;
       element.addEventListener("mouseover", (event) => {
-        
+        console.log("companyon");
         var mouseX = event.clientX; // 获取鼠标相对于浏览器窗口左上角的横坐标
         var mouseY = event.clientY; // 获取鼠标相对于浏览器窗口左上角的纵坐标
         
@@ -751,14 +751,15 @@ window.addEventListener("load", function() {
   }
 }    
 
-for (const key in map) {
-  if (map.hasOwnProperty(key)) {
-    const data = map[key].data;
-    data.forEach((item, index) => {
-      console.log(item.split(',').length);
-    });
-  }
-}
+// for (const key in map) {
+//   if (map.hasOwnProperty(key)) {
+//     const data = map[key].data;
+//     data.forEach((item, index) => {
+//       console.log(item.split(',').length);
+//     });
+//   }
+// }
+
 
 // 检查二维码出现
 function check_qr() {
@@ -883,7 +884,21 @@ function connection_fade_in_callback() {
   }
 }
 
+$(".test").click(() => {
+  if ($(".obj").attr("id") === "company_object") {
+    $(".obj").attr("data", "comment.svg"); // 设置data属性
+  $(".obj").attr("id", "comment_object"); // 设置id属性
+  } else {
+    $(".obj").attr("data", "3092451869.svg"); // 设置data属性
+  $(".obj").attr("id", "company_object");
+  }
+  
+});
 
+const Bei = document.getElementById("Beijing");
+Bei.addEventListener("click", () => {
+  console.log("click9");
+})
 
 
 
