@@ -437,18 +437,10 @@ $(document).ready(function() {
 
 
 // 地图覆盖出现卡片
-const svgObject = document.getElementById('svg-object');
+const company_object = document.getElementById('company_object');
 const comment_object = document.getElementById('comment_object');
 
-const card_wrap = document.getElementsByClassName("card_wrap")[0];
 const area = document.getElementById("area");
-const company = document.getElementById("company");
-const secard = document.getElementsByClassName("secard")[0];
-const industry  = document.getElementsByClassName("industry")[0];
-const date = document.getElementsByClassName("date")[0];
-const representative = document.getElementsByClassName("representative")[0];
-const city = document.getElementsByClassName("city")[0];
-const test = document.getElementsByClassName("test")[0];
 const mapobj = document.getElementsByClassName("map")[0];
 const map_2_obj = document.getElementsByClassName("map")[1];
 var on_secard = false;
@@ -457,7 +449,7 @@ var on_p = false;
 var on_ele = false;
 
 window.addEventListener("load", function() {
-    const svgDocument = svgObject.contentDocument;
+    
     const comment_document = comment_object.contentDocument;
     const com_provinces = Array.from(comment_document.getElementsByClassName("province"));
     com_provinces.forEach(ele => {
@@ -488,9 +480,11 @@ window.addEventListener("load", function() {
         ele.style.fill = last_fill;
       })
     })
+
+    const campany_document = company_object.contentDocument;
     console.log(svgObject);
     console.log(svgDocument);
-    var provinces = Array.from(svgDocument.getElementsByClassName("province"));
+    var provinces = Array.from(campany_document.getElementsByClassName("province"));
     console.log(provinces);
     provinces.forEach(element => {
 
@@ -503,7 +497,7 @@ window.addEventListener("load", function() {
         
         
         for (var key in map) {
-          if (map.hasOwnProperty(key) && typeof map[key] === 'object' && 'data' in map[key] && map[key].data !== '' && key === ele.id) {
+          if (map.hasOwnProperty(key) && typeof map[key] === 'object' && 'data' in map[key] && map[key].data !== '' && key === element.id) {
             element.style.fill = "pink";
             const card = this.document.createElement("div");
             mapobj.appendChild(card);
