@@ -461,18 +461,20 @@ window.addEventListener("load", function() {
     var provinces = Array.from(svgDocument.getElementsByClassName("province"));
     console.log(provinces);
     provinces.forEach(element => {
+
       const last_fill = element.style.fill;
       element.addEventListener("mouseover", (event) => {
         element.style.fill = "pink";
         var mouseX = event.clientX; // 获取鼠标相对于浏览器窗口左上角的横坐标
         var mouseY = event.clientY; // 获取鼠标相对于浏览器窗口左上角的纵坐标
         
-        const card = this.document.createElement("div");
-        mapobj.appendChild(card);
-        card.classList.add("card");
+        
         
         for (var key in map) {
           if (element.id === key) {
+            const card = this.document.createElement("div");
+            mapobj.appendChild(card);
+            card.classList.add("card");
             area.innerHTML = map[key].title;
             map[key].data.forEach((ele, index) => {
               const company = this.document.createElement("div");
@@ -515,6 +517,7 @@ window.addEventListener("load", function() {
       element.addEventListener("mouseleave", () => {
         const card = this.document.getElementsByClassName("card")[0];
         card.remove()
+        element.style.fill = last_fill;
       })
 
     });
