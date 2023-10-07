@@ -464,7 +464,7 @@ window.addEventListener("load", function() {
 
       const last_fill = element.style.fill;
       element.addEventListener("mouseover", (event) => {
-        element.style.fill = "pink";
+        
         var mouseX = event.clientX; // 获取鼠标相对于浏览器窗口左上角的横坐标
         var mouseY = event.clientY; // 获取鼠标相对于浏览器窗口左上角的纵坐标
         
@@ -472,6 +472,7 @@ window.addEventListener("load", function() {
         
         for (var key in map) {
           if (map.hasOwnProperty(key) && typeof map[key] === 'object' && 'data' in map[key] && map[key].data !== '' ) {
+            element.style.fill = "pink";
             const card = this.document.createElement("div");
             mapobj.appendChild(card);
             card.classList.add("card");
@@ -518,6 +519,7 @@ window.addEventListener("load", function() {
       })
 
       element.addEventListener("mouseleave", () => {
+        console.log("leave")
         const card = this.document.getElementsByClassName("card")[0];
         card.remove()
         element.style.fill = last_fill;
