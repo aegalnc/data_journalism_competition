@@ -71,19 +71,87 @@
     <div class="map">  
         <object data="3092451869.svg" id="svg-object">
         </object>>
+        <img src="image/mapb.jpg" alt="" >
         <div class="card_wrap">
             <div class="card">
                 <div id="area">地区名</div>
+                <div class="company">
+                    <div id="name">地区名</div>
+                    <div class="content">
+                        <div class="left">
+                            <p class="industry secard_item">科技推广和应用服务业</p>
+                            <p class="date secard_item">2014-10-22</p>
+                        </div>
+                        <div class="right">
+                            <p class="city secard_item">北京市</p>
+                            <p class="representative secard_item">法定代表人</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="company">
+                    <div id="name">地区名</div>
+                    <div class="content">
+                        <div class="left">
+                            <p class="industry secard_item">科技推广和应用服务业</p>
+                            <p class="date secard_item">2014-10-22</p>
+                        </div>
+                        <div class="right">
+                            <p class="city secard_item">北京市</p>
+                            <p class="representative secard_item">法定代表人</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="company">
+                    <div id="name">地区名</div>
+                    <div class="content">
+                        <div class="left">
+                            <p class="industry secard_item">科技推广和应用服务业</p>
+                            <p class="date secard_item">2014-10-22</p>
+                        </div>
+                        <div class="right">
+                            <p class="city secard_item">北京市</p>
+                            <p class="representative secard_item">法定代表人</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="company">
+                    <div id="name">公司名</div>
+                    <div class="content">
+                        <div class="left">
+                            <p class="industry secard_item">科技推广和应用服务业</p>
+                            <p class="date secard_item">2014-10-22</p>
+                        </div>
+                        <div class="right">
+                            <p class="city secard_item">北京市</p>
+                            <p class="representative secard_item">法定代表人</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="company">
+                    <div id="name">地区名</div>
+                    <div class="content">
+                        <div class="left">
+                            <p class="industry secard_item">科技推广和应用服务业</p>
+                            <p class="date secard_item">2014-10-22</p>
+                        </div>
+                        <div class="right">
+                            <p class="city secard_item">北京市</p>
+                            <p class="representative secard_item">法定代表人</p>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
         </div>
-        <div class="secard" style="display: none;">
+        <!-- <div class="secard" style="display: none;">
             <p class="secard_title">资料卡</p>
             <div class="secard_content">
                 <div class="left">
-                    <p class="secard_item_title">所属行业</p>
-                    <p class="industry secard_item">科技推广和应用服务业</p>
-                    <p class="secard_item_title">成立日期</p>
-                    <p class="date secard_item">2014-10-22</p>
+                   
                 </div>
                 <div class="right">
                     <p class="secard_item_title">法定代表人</p>
@@ -91,8 +159,8 @@
                     </p>
                     <p class="secard_item_title">城市</p>
                     <p class="city secard_item">北京市</p>
-                </div>
-            </div>
+                </div> 
+            </div>-->
             <a href="" class="href">
                 <p>跳转</p>
             </a>
@@ -102,147 +170,7 @@
         <p class="map_title">我是表头</p>
             <button class="test" id="Beijing"></button> 
     </div>
-        */
-        <div id="main" style="width: 100vw;height:100vh;"></div>
-        <script type="text/javascript">
-          
 
-var chartDom = document.getElementById('main');
-var myChart = echarts.init(chartDom);
-window.addEventListener('resize', function() {
-    myChart.resize();
-});
-var option;
-
-myChart.showLoading();
-$.get('100000_full.json', function (geoJson) {
-  myChart.hideLoading();
-  echarts.registerMap('China', geoJson);
-  option = {
-    
-    title: {
-      text: '表头',
-      subtext: '数据来自',
-      sublink: '数据链接',
-      left: 'right'
-    },
-    backgroundColor: '#222224',
-    tooltip: {
-      trigger: 'item',
-      showDelay: 0,
-      transitionDuration: 0.2
-    },
-    visualMap: {
-      left: 'right',
-      min: 1,
-      max: 50,
-      inRange: {
-        color: [
-        '#fee090',
-          '#fdae61',
-          '#f46d43',
-          '#d73027',
-          '#a50026'         
-        ]
-      },
-      text: ['High', 'Low'],
-      calculable: true
-    },
-    toolbox: {
-      show: true,
-      //orient: 'vertical',
-      left: 'left',
-      top: 'top',
-      feature: {
-        dataView: { readOnly: false },
-        restore: {},
-        saveAsImage: {}
-      }
-    },
-    series: [
-      {
-        name: '地区',
-        type: 'map',
-        roam: false,
-        map: 'China',
-        emphasis: {
-          label: {
-            show: true
-          }
-        },
-        data: [
-          { name: '北京市', value: 84 },
-          { name: '安徽省', value: 8 },
-          { name: '福建省', value: 4 },
-          { name: '甘肃省', value: 1 },
-          { name: '广东省', value: 41 },
-          { name: '贵州省', value: 1 },
-          { name: '海南省', value: 1 },
-          { name: '河北省', value: 7 },
-          { name: '河南省', value: 9 },
-          { name: '黑龙江省', value: 28 },
-          { name: '湖北省', value: 14 },
-          { name: '湖南省', value: 6 },
-          { name: '吉林省', value: 3 },
-          { name: '江苏省', value: 47 },
-          { name: '江西省', value: 8 },
-          { name: '辽宁省', value: 8 },
-          { name: '内蒙古自治区', value: 4 },
-          { name: '山东省', value: 17 },
-          { name: '山西省', value: 6 },
-          { name: '陕西省', value: 9 },
-          { name: '上海市', value: 71 },
-          { name: '四川省', value: 30 },
-          { name: '天津市', value: 2 },
-          { name: '云南省', value: 7 },
-          { name: '浙江省', value: 35 },
-          { name: '香港特别行政区', value: 11 },
-          { name: '重庆市', value: 6 },
-          { name: '新疆维吾尔自治区', 
-            itemStyle: {
-                areaColor: '#ffffbf', // 设置该省份的颜色
-            }
-          },
-          { name: '西藏自治区',
-            itemStyle: {
-                areaColor: '#ffffbf', // 设置该省份的颜色
-            }
-          },
-          { name: '青海省',
-            itemStyle: {
-                areaColor: '#ffffbf', // 设置该省份的颜色
-            } 
-          },
-          { name: '宁夏回族自治区', 
-            itemStyle: {
-                areaColor: '#ffffbf', // 设置该省份的颜色
-            }
-          },
-          { name: '四川省', 
-            itemStyle: {
-                areaColor: '#ffffbf', // 设置该省份的颜色
-            }
-          },
-          { name: '广西壮族自治区', 
-            itemStyle: {
-                areaColor: '#ffffbf', // 设置该省份的颜色
-            }
-          },
-          { name: '台湾省', 
-            itemStyle: {
-                areaColor: '#ffffbf', // 设置该省份的颜色
-            }
-          },        
-        ]
-      }
-    ],
-   
-  };
-  myChart.setOption(option);
-});
-
-option && myChart.setOption(option);
-        </script>
     <div class="no_height_container">
         <div class="cases_paraghraph">看着地图上的付费实习公司的数据与评价</div>
         <div class="cases_paraghraph">我很心动</div>
